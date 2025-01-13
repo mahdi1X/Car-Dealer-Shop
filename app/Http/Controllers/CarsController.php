@@ -13,9 +13,9 @@ class CarsController extends Controller
      */
     public function index()
     {
-
         $cars = Car::all();
-        return view("cars.index", compact("cars"));
+        
+        return view("brands.show", compact("cars"));
     }
 
 
@@ -65,9 +65,10 @@ class CarsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Car $car)
     {
-        //
+        return view('cars.show', compact('car'));
+        
     }
 
     /**

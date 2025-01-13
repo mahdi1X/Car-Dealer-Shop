@@ -14,10 +14,8 @@
 
 </head>
 
-<body style="background-color:grey">
-
-
-
+<body>
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-image: url('{{ asset('storage/common-images/germaniya-flag-germany-flag.webp') }}');" >
         
     {{-- style="background-image: C:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\storage\app\public\commonimages\germaniya-flag-germany-flag.webp"
@@ -34,10 +32,10 @@
             <ul class="navbar-nav mr-auto">
                 @foreach ($brands as $brand)
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">{{ $brand->name}}</a>
+                        {{-- <a class="nav-link" href="{{route('brands.show')}}">{{ $brand->name}}</a> --}}
+                        <a class="nav-link" href="{{route('brands.show', ['brand' => $brand->id]) }}">{{ $brand->name}}</a>
                     </li>
                 @endforeach
-
             </ul>
         </div>
     </nav>
