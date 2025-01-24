@@ -20,7 +20,10 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::with('car')->paginate(10);
+        //$reservations = Reservation::with('car')->paginate(10);
+        $reservations = Reservation::with('car')
+        ->where('user_id', auth()->id()) // Filter reservations by the authenticated user's ID
+        ->paginate(10);
         return view("reservations.index", compact("reservations"));
     }
 
