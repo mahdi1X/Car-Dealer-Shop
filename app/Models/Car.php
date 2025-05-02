@@ -17,9 +17,15 @@ class Car extends Model
         "price",
         "length",
         "image",
+        "created_by_id",
+        "km_recorded"
     ];
 
 
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
     /**
      * Get the brand associated with the car.
      */
@@ -27,7 +33,8 @@ class Car extends Model
     {
         return $this->belongsTo(Brand::class);
     }
-    public function Reservation(): HasMany{
+    public function Reservation(): HasMany
+    {
         return $this->hasMany(Reservation::class);
     }
 }

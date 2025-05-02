@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Redirect;
 class ReservationController extends Controller
 {
 
-    public function __construct() {
+    public function __construct()
+    {
         // $this->middleware('auth');
     }
     /**
@@ -22,9 +23,12 @@ class ReservationController extends Controller
     {
         //$reservations = Reservation::with('car')->paginate(10);
         $reservations = Reservation::with('car')
-        ->where('user_id', auth()->id()) // Filter reservations by the authenticated user's ID
-        ->paginate(10);
-        return view("reservations.index", compact("reservations"));
+            ->where('user_id', auth()->id())
+            ->get();
+        $reservations_received = Reservation::whereHas('car', function ($query) {
+            $query->where('created_by_id', auth()->id());
+        })->get();
+        return view("reservations.index", compact("reservations", 'reservations_received'));
     }
 
     /**
@@ -76,20 +80,27 @@ class ReservationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Reservation $reservation)
     {
-        //
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-    
+
     }
-    public function cancelReservation(Reservation $reservation){
+    public function cancelReservation(Reservation $reservation)
+    {
         $reservation->update(['state' => StatesEnum::CANCELED]);
         return redirect()->route('reservations.index')->with('success', 'Reservation canceled successfully.');
     }
+    public function completeReservation(Reservation $reservation)
+    {
+        $reservation->update(['state' => StatesEnum::COMPLETED]);
+        return redirect()->route('reservations.index')->with('success', 'Reservation completed successfully.');
+    }
+
 }

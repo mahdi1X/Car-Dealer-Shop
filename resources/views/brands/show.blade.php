@@ -1,31 +1,59 @@
 @extends('layouts.app')
-@section('content')
-<div class="container bg-white m-5 rounded">
-    <H1>Cars</H1>
-    <!-- Card grid for displaying cars -->
-    <div class="row p-1">
 
-        @foreach ($cars as $car)
-            <div class="col-sm-3 rounded">
-                <div class="card rounded">
-                    <img src="{{ asset('storage/' . $car->image) }}" style="width: 100%; height: 150px; object-fit: contain" alt="Car Image">
-                    <div class="p-3">
-                        <h5 class="card-title">{{ $car->name }}</h5>
-                        <p class="brand">Brand: {{ $car->brand->name }}</p>
-                        {{-- <p class="year">Year: {{ $car->year }}</p> --}}
-                        {{-- <p class="color">Color: {{ $car->color }}</p> --}}
-                        <p class="price">$ {{ number_format($car->price, 2) }}</p>
-                        {{-- <button > --}}
-                            <a href="{{route('cars.show', ['car' => $car->id]) }}" class="btn btn-primary">
-                                More Details
-                            </a>
-                            
-                        {{-- </button> --}}
-                        {{-- <p class="length">Length: {{ $car->length }} meters</p> --}}
-                        {{-- <a href="{{ route('cars.show', $car->id) }}" class="btn btn-custom">View Details</a> --}}
+@section('content')
+    <div class="container mt-5">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="row g-0 align-items-center">
+                @if ($brand->icon)
+                    <div class="col-md-3 text-center p-3">
+                        <img src="{{ asset('storage/' . $brand->icon) }}" alt="{{ $brand->name }}" class="img-fluid"
+                            style="max-height: 150px; object-fit: contain;">
+                    </div>
+                @endif
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ $brand->name }}</h2>
+                        <p class="card-text"><strong>Total Cars:</strong> {{ $brand->cars->count() }}</p>
                     </div>
                 </div>
             </div>
-        @endforeach
-    </div></div>
+        </div>
+
+        <h4 class="mb-3">Cars by {{ $brand->name }}</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+            @forelse($brand->cars as $car)
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                @if ($car->image)
+                                    <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->model }}"
+                                        class="img-fluid rounded-start" style="height: 100%; object-fit: cover;">
+                                @else
+                                    <div class="d-flex align-items-center justify-content-center bg-secondary text-white h-100"
+                                        style="min-height: 150px;">
+                                        <span>No Image</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $car->name ?? 'Unnamed Car' }}</h5>
+                                    <p class="card-text">$ {{ number_format($car->price, 2) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="col">
+                    <div class="alert alert-warning">No cars available for this brand.</div>
+                </div>
+            @endforelse
+        </div>
+
+        <div class="mt-4">
+            <a href="{{ route('brands.index') }}" class="btn btn-secondary">Back to Brands</a>
+        </div>
+    </div>
 @endsection

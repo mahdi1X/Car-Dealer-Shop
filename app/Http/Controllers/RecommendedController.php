@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Brand;
 use App\Models\Car;
+use App\Models\Brand;
+use Illuminate\Support\Facades\Auth;
 
-class BrandsController extends Controller
+class RecommendedController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $brands = Brand::all();
-        return view('brands.index', compact('brands'));
+        //
     }
 
     /**
@@ -22,7 +22,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        return view("brands.create");
+        //
     }
 
     /**
@@ -30,34 +30,15 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'icon' => 'required|file|mimes:jpg,jpeg,png|max:20048',
-        ]);
-
-        if ($request->hasFile('icon')) {
-            $imagePath = $request->file('icon')->store('brands', 'public');
-            $validatedData['icon'] = $imagePath; // Save the file path in the database
-        }
-
-
-        $brand = Brand::create($validatedData);
-
-        return redirect()->route(route: 'brands.create');
+        //
     }
-
 
     /**
      * Display the specified resource.
      */
-    public function show(Brand $brand)
+    public function show(string $id)
     {
-        // $cars = Car::where('brand_id', '=', $brand->id)->get();
-        // $cars = $brand->cars;
-        // dd();
-
-        return view('brands.show', compact('brand'));
+        //
     }
 
     /**
@@ -83,4 +64,22 @@ class BrandsController extends Controller
     {
         //
     }
+    public function recommended()
+    {
+        $cars = Car::query()->whereNull('created_by_id');
+        if (Auth::check()) {
+            $cars = $cars->orWhere('created_by_id', '!=', Auth::user()->id);
+        }
+        $cars = $cars->inRandomOrder()->take(8)->get();
+        // dd($cars->count());
+        // Check if there are any cars fetched
+        if (!$cars->count()) {
+            return view('recommended', compact('cars'))->with('message', 'No cars found.');
+        }
+
+
+
+        return view('recommended', compact('cars'));
+    }
+
 }

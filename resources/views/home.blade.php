@@ -13,7 +13,7 @@
                         <div class="container">
                             <div class="row align-items-center justify-content-center justify-content-lg-start">
                                 <div class="col-10 col-lg-7 text-center text-lg-start">
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Check Our Cars</h1>
+                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Create Your Own Page</h1>
                                 </div>
                                 <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
                                     <img class="img-fluid" src="img/carousel-1.png" alt="">
@@ -29,7 +29,7 @@
                             <div class="row align-items-center justify-content-center justify-content-lg-start">
                                 <div class="col-10 col-lg-7 text-center text-lg-start">
 
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Find Variaty of German brand new cars</h1>
+                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Display Your Cars Under Variaty Of Brands You Create</h1>
                                 </div>
                                 <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
                                     <img class="img-fluid" src="img/carousel-2.png" alt="">
@@ -53,7 +53,6 @@
     </div>
     <!-- Carousel End -->
 
-
     <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -63,7 +62,7 @@
                         <i class="fa fa-certificate fa-3x text-primary flex-shrink-0"></i>
                         <div class="ps-4">
                             <h5 class="mb-3">Quality Servicing</h5>
-                            <p>The best dealer shop that offers german brands</p>
+                            <p>The best dealer shop that offers car hosting for sale</p>
                         </div>
                     </div>
                 </div>
@@ -131,7 +130,7 @@
     <div class="container-xxl service py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Explore Our Cars</h1>
+                <h1 class="mb-5">Explore may cars for sale</h1>
             </div>
             <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-lg-4">
@@ -165,8 +164,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h3 class="mb-3">12 Years Of Experience In Cars Dealing</h3>
-                                    <p class="mb-4">Everything you need to know about global German cars</p>
+                                    <h3 class="mb-3">12 Years Of Experience In Commercial mediation</h3>
+                                    <p class="mb-4">Everything you need to know about global cars</p>
                                     <p><i class="fa fa-check text-success me-3"></i>Quality Servicing</p>
                                     <p><i class="fa fa-check text-success me-3"></i>Fast Response</p>
                                     <p><i class="fa fa-check text-success me-3"></i>You are the controller</p>
@@ -182,8 +181,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h3 class="mb-3">12 Years Of Experience In Cars Dealing</h3>
-                                    <p class="mb-4">Everything you need to know about global German cars</p>
+                                    <h3 class="mb-3">12 Years Of Experience In 
+                                        Commercial mediation</h3>
+                                    <p class="mb-4">Everything you need to know about global cars</p>
                                     <p><i class="fa fa-check text-success me-3"></i>Quality Servicing</p>
                                     <p><i class="fa fa-check text-success me-3"></i>Fast Response</p>
                                     <p><i class="fa fa-check text-success me-3"></i>You are the controller</p>
@@ -199,8 +199,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h3 class="mb-3">12 Years Of Experience In Cars Dealing</h3>
-                                    <p class="mb-4">Everything you need to know about global German cars</p>
+                                    <h3 class="mb-3">12 Years Of Experience In
+                                        Commercial mediation</h3>
+                                    <p class="mb-4">Everything you need to know about global cars</p>
                                     <p><i class="fa fa-check text-success me-3"></i>Quality Servicing</p>
                                     <p><i class="fa fa-check text-success me-3"></i>Fast Response</p>
                                     <p><i class="fa fa-check text-success me-3"></i>You are the controller</p>
@@ -216,8 +217,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h3 class="mb-3">12 Years Of Experience In Cars Dealing</h3>
-                                    <p class="mb-4">Everything you need to know about global German cars</p>
+                                    <h3 class="mb-3">12 Years Of Experience In 
+                                        Commercial mediation</h3>
+                                    <p class="mb-4">Everything you need to know about global cars</p>
                                     <p><i class="fa fa-check text-success me-3"></i>Quality Servicing</p>
                                     <p><i class="fa fa-check text-success me-3"></i>Fast Response</p>
                                     <p><i class="fa fa-check text-success me-3"></i>You are the controller</p>
@@ -303,7 +305,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">German Car Dealer Shop</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="#">CarMart Shop</a>, All Right Reserved.
 
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                     

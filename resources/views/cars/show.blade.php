@@ -9,10 +9,12 @@
             <h2>{{ $car->name }}</h2>
         </div>
         <div class="card-body">
+            <p><strong>Owner:</strong>{{$car->createdBy->name}}</p>
             <p><strong>Color:</strong> {{ $car->color }}</p>
             <p><strong>Brand:</strong> {{ $car->brand->name }}</p>
             <p><strong>Year:</strong> {{ $car->year }}</p>
             <p><strong>Price:</strong> ${{ number_format($car->price, 2) }}</p>
+            <p><strong>KM Recorded:</strong> {{ $car->km_recorded }}</p>
             <p><strong>Length:</strong> {{ $car->length }} meters</p>
             
             @if ($car->image)

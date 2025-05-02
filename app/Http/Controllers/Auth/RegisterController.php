@@ -69,11 +69,11 @@ class RegisterController extends Controller
     //      dd($request->all());
 
     //     $this->guard()->login($user);
- 
+
     //     if ($response = $this->registered($request, $user)) {
     //         return $response;
     //     }
- 
+
     //     return $request->wantsJson()
     //                 ? new JsonResponse([], 201)
     //                 : redirect($this->redirectPath());
@@ -93,6 +93,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'address' => $data['address'],
             'payment_method' => $data['payment_method'],
+            'role' => 'customer'
         ]);
     }
 }

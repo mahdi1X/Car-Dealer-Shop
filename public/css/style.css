@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #D81324;
+    --primary: #136fd8!important;
     --secondary: #0B2154;
     --light: #F2F2F2;
     --dark: #111111;
@@ -15,6 +15,14 @@
     display: none;
     right: 45px;
     bottom: 45px;
+    z-index: 99;
+}
+
+
+.fixed-bottom-button {
+    position: fixed;
+    right: 60px;
+    bottom: 60px;
     z-index: 99;
 }
 
@@ -44,6 +52,8 @@
 .btn.btn-primary,
 .btn.btn-secondary {
     color: #FFFFFF;
+    background-color: var(--primary);
+    border-color: var(--primary);
 }
 
 .btn-square {
