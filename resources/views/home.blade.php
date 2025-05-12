@@ -13,7 +13,7 @@
                         <div class="container">
                             <div class="row align-items-center justify-content-center justify-content-lg-start">
                                 <div class="col-10 col-lg-7 text-center text-lg-start">
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Create Your Own Page</h1>
+                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">List and Buy Cars</h1>
                                 </div>
                                 <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
                                     <img class="img-fluid" src="img/carousel-1.png" alt="">
@@ -29,7 +29,7 @@
                             <div class="row align-items-center justify-content-center justify-content-lg-start">
                                 <div class="col-10 col-lg-7 text-center text-lg-start">
 
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Display Your Cars Under Variaty Of Brands You Create</h1>
+                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Display Your Cars Under Variaty Of Brands</h1>
                                 </div>
                                 <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
                                     <img class="img-fluid" src="img/carousel-2.png" alt="">
@@ -71,7 +71,7 @@
                         <i class="fa fa-users-cog fa-3x text-primary flex-shrink-0"></i>
                         <div class="ps-4">
                             <h5 class="mb-3">Fast Response</h5>
-                            <p>After your reservation there is no need for waiting go and recieve the car</p>
+                            <p>After your reservation there is no need for waiting go and recieve the car at the date you choose</p>
             
                         </div>
                     </div>
@@ -130,7 +130,7 @@
     <div class="container-xxl service py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Explore may cars for sale</h1>
+                <h1 class="mb-5">Explore many cars for sale</h1>
             </div>
             <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-lg-4">
@@ -286,7 +286,7 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Beirut,Dahye,Laylake</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Beirut, Dahye, Laylake</p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+961 76 03 66 89</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>10121525@mu.ed.lb.com</p>
                 

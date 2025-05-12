@@ -21,7 +21,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //$reservations = Reservation::with('car')->paginate(10);
+        //$reservations = Reservation::with('car')->paginate(10);   
         $reservations = Reservation::with('car')
             ->where('user_id', auth()->id())
             ->get();
@@ -48,18 +48,23 @@ class ReservationController extends Controller
             "car_id" => "required",
             "reservation_date" => "required",
         ]);
-
-        $reservation = Reservation::where("car_id", "=", $validatedData['car_id'])->where("user_id", Auth::user()->id)->where("state", "=", StatesEnum::PENDING)->first();
-
-        if ($reservation) {
+    
+        // Check if the car is already reserved by *any* user with a pending reservation
+        $existingReservation = Reservation::where("car_id", $validatedData['car_id'])
+            ->where("state", StatesEnum::PENDING)
+            ->first();
+    
+        if ($existingReservation) {
             return Redirect::back()->with('msg', 'Car already reserved');
         }
-        $validatedData['user_id'] = Auth::user()->id;
-
-        $reservation = Reservation::create($validatedData);
-
+    
+        $validatedData['user_id'] = Auth::id();
+    
+        Reservation::create($validatedData);
+    
         return Redirect::back()->with('msg', 'Reserved Successfully');
     }
+    
 
     /**
      * Display the specified resource.
@@ -88,9 +93,10 @@ class ReservationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function view(string $id)
     {
-
+        $reservation = Reservation::with(['car', 'user'])->findOrFail($id);
+        return view('reservations.show', compact('reservation'));
     }
     public function cancelReservation(Reservation $reservation)
     {
@@ -102,5 +108,6 @@ class ReservationController extends Controller
         $reservation->update(['state' => StatesEnum::COMPLETED]);
         return redirect()->route('reservations.index')->with('success', 'Reservation completed successfully.');
     }
+    
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\PolicyController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RecommendedController;
 use App\Http\Controllers\AdminUserController;
+
 
 Route::get('/', [CommonController::class, 'index']);
 
@@ -30,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/brands/create', [BrandsController::class, 'create'])->name('brands.create');
     Route::post('/brands', [BrandsController::class, 'store'])->name('brands.store');
+    Route::get('/admin/analytics',[AdminDashboardController::class,'show'])->name('analytics.index');
 
     Route::get('/cars/create', [CarsController::class, 'showCreateForm'])->name('cars.create');
     Route::get('/cars/{car}/edit', [CarsController::class, 'edit'])->name('cars.edit');
@@ -45,9 +48,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/reservations/{reservation}/cancel', [ReservationController::class, 'cancelReservation'])->name('reservations.cancel');
     // Route::post(uri: '/reservations/{reservation}/complete', [ReservationController::class, 'cancelReservation'])->name('reservations.completed');
     Route::post('/reservations/{reservation}/complete', [ReservationController::class, 'completeReservation'])->name('reservations.complete');
+    Route::get('/reservations/{reservation}/view', [ReservationController::class, 'view'])->name('reservations.view');
+
 });
 
 Route::get('/brands/{brand}', action: [BrandsController::class, 'show'])->name('brands.show');
+Route::put('/brands/{id}', [BrandsController::class, 'update'])->name('brands.update');
+Route::get('/brands/{brand}/edit', [BrandsController::class, 'edit'])->name('brands.edit');
+
 
 Route::get('/cars/{car}', [CarsController::class, 'show'])->name('cars.show');
 

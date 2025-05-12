@@ -65,16 +65,33 @@ class BrandsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        return view('brands.create', compact('brand'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+    
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'icon' => 'nullable|file|mimes:jpg,jpeg,png|max:20048',
+        ]);
+    
+        if ($request->hasFile('icon')) {
+            $imagePath = $request->file('icon')->store('brands', 'public');
+            $validatedData['icon'] = $imagePath;
+        }
+    
+        $brand->update($validatedData);
+    
+        return redirect()->route('brands.index')->with('success', 'Brand updated successfully.');
     }
+    
 
     /**
      * Remove the specified resource from storage.

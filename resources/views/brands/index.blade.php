@@ -21,6 +21,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $brand->name }}</h5>
                         <a href="{{ route('brands.show', $brand->id) }}" class="btn btn-outline-primary">View Details</a>
+                        <a href="{{ route('brands.edit', $brand->id) }}" class="btn btn-outline-primary">Update Brands</a>
                     </div>
                 </div>
             </div>

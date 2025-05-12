@@ -21,8 +21,12 @@
             <p><strong>Name:</strong> {{ $reservation->user->name }}</p>
             <p><strong>Email:</strong> {{ $reservation->user->email }}</p>
 
-            <h4>State:</h4>
-            <p><strong>Status:</strong> {{ $reservation->state->label() }}</p>
+            <a href="mailto:{{ $reservation->user->email }}?subject=Regarding your car reservation&body=Hello {{ $reservation->user->name }},%0D%0A%0D%0AI am contacting you regarding your reservation for the car '{{ $reservation->car->name }}' (Reservation ID: {{ $reservation->id }}). Please let me know if you have any questions.%0D%0A%0D%0AThank you."
+                class="btn btn-success mt-3">
+                 📧 Contact User
+             </a>
+             
+
         </div>
     </div>
 

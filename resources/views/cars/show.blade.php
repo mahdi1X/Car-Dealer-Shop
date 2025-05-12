@@ -29,9 +29,12 @@
 </div>
 
 <!-- Fixed Button -->
-<a href="{{route('reservations.create',['car'=> $car->id])}}"class="fixed-button btn btn-primary">
-   Reserve Now
-</a>
+@if(Auth::check() && $car->created_by_id != Auth::id())
+    <a href="{{ route('reservations.create', ['car' => $car->id]) }}" class="fixed-button btn btn-primary">
+        Reserve Now
+    </a>
+@endif
+
 @endsection
 
 <!-- Add inline or separate CSS -->

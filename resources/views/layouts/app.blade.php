@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ 'German Cars' }}</title>
-
+    <title>{{ 'CartMart' }}</title>
+    
     <!-- Fonts & Icons -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -50,16 +50,17 @@
                         <button class="btn btn-outline-light" type="submit"
                             style="background-color: #4b4b4b">Search</button>
                     </form>
+                    <li class="nav-item">
+                        <a class="navbar-brand animated-border"
+                            href="{{ route('recommended.cars') }}">Recommended</a>
+                    </li>
                 @endauth
 
                 <!-- Navigation links -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto align-items-center">
 
-                        <li class="nav-item">
-                            <a class="navbar-brand animated-border"
-                                href="{{ route('recommended.cars') }}">Recommended</a>
-                        </li>
+               
                         <li class="nav-item">
                             <a class="navbar-brand animated-border" href="{{ route('policy') }}">Policies</a>
                         </li>
@@ -75,6 +76,10 @@
                                 <li class="nav-item">
                                     <a class="navbar-brand animated-border"
                                         href="{{ route('brands.index') }}">Brands</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="navbar-brand animated-border"
+                                        href="{{ route('analytics.index') }}">Analytics</a>
                                 </li>
                             @else
                            

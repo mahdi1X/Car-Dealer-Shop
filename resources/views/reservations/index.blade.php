@@ -125,6 +125,7 @@
                                                         <button type="submit"
                                                             class="btn btn-sm btn-outline-success">Complete</button>
                                                     </form>
+                                                    <a  class="btn btn-sm btn-outline-success" href="{{route('reservations.view',$reservation->id)}}">View</a>
                                                 @endif
                                             </td>
                                         </tr>
