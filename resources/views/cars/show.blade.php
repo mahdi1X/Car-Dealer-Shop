@@ -9,13 +9,14 @@
             <h2>{{ $car->name }}</h2>
         </div>
         <div class="card-body">
-            <p><strong>Owner:</strong>{{$car->createdBy->name}}</p>
-            <p><strong>Color:</strong> {{ $car->color }}</p>
-            <p><strong>Brand:</strong> {{ $car->brand->name }}</p>
-            <p><strong>Year:</strong> {{ $car->year }}</p>
-            <p><strong>Price:</strong> ${{ number_format($car->price, 2) }}</p>
-            <p><strong>KM Recorded:</strong> {{ $car->km_recorded }}</p>
-            <p><strong>Length:</strong> {{ $car->length }} meters</p>
+           <p><i class="bi bi-person-fill me-1 text-dark"></i> <strong>Owner:</strong> {{ $car->createdBy->name }}</p>
+<p><i class="bi bi-palette-fill me-1 text-dark"></i> <strong>Color:</strong> {{ $car->color }}</p>
+<p><i class="bi bi-shield-check me-1 text-dark"></i> <strong>Brand:</strong> {{ $car->brand->name }}</p>
+<p><i class="bi bi-calendar3 me-1 text-dark"></i> <strong>Year:</strong> {{ $car->year }}</p>
+<p><i class="bi bi-cash-stack me-1 text-dark"></i> <strong>Price:</strong> ${{ number_format($car->price, 2) }}</p>
+<p><i class="bi bi-speedometer2 me-1 text-dark"></i> <strong>KM Recorded:</strong> {{ $car->km_recorded }}</p>
+<p><i class="bi bi-arrows-angle-expand me-1 text-dark"></i> <strong>Length:</strong> {{ $car->length }} meters</p>
+
             <div class="flex items-center justify-center space-x-2 mt-4">
    @php
     $liked = auth()->check() && $car->likes()->where('user_id', auth()->id())->where('like', 1)->exists();
