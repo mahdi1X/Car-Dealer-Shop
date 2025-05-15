@@ -48,7 +48,7 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                @if ($reservation->state->value !== 'canceled')
+                                                @if ($reservation->state->value !== 'canceled' && $reservation->state->value !== 'completed' )
                                                     <form action="{{ route('reservations.cancel', $reservation->id) }}"
                                                         method="POST" onsubmit="return confirm('Cancel this reservation?')"
                                                         class="d-inline">

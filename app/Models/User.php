@@ -3,7 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasMany; 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,4 +54,14 @@ public function reservations(): HasMany
 {
     return $this->hasMany(Reservation::class);
 }
+public function likes()
+{
+    return $this->hasMany(Like::class);
+}
+
+public function likedCars()
+{
+    return $this->belongsToMany(Car::class, 'likes')->withPivot('like')->withTimestamps();
+}
+    
 }

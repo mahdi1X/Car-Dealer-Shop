@@ -101,11 +101,13 @@ class ReservationController extends Controller
     public function cancelReservation(Reservation $reservation)
     {
         $reservation->update(['state' => StatesEnum::CANCELED]);
+        $reservation->delete();
         return redirect()->route('reservations.index')->with('success', 'Reservation canceled successfully.');
     }
     public function completeReservation(Reservation $reservation)
     {
         $reservation->update(['state' => StatesEnum::COMPLETED]);
+        $reservation->delete();
         return redirect()->route('reservations.index')->with('success', 'Reservation completed successfully.');
     }
     

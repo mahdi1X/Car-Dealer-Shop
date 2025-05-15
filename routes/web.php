@@ -10,6 +10,7 @@ use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RecommendedController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\LikeController;
 
 
 Route::get('/', [CommonController::class, 'index']);
@@ -40,6 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('cars/{id}', [CarsController::class, 'update'])->name('cars.update');
     Route::delete('cars/{id}', [CarsController::class, 'destroy'])->name('cars.destroy');
     // Route::get('', [CarsController::class, 'destroy'])->name('cars.destroy');
+    Route::middleware('auth')->post('/like-toggle', [LikeController::class, 'toggle'])->name('like.toggle');
+    Route::get('/my-liked-cars', [CarsController::class, 'myLikedCars'])->middleware('auth')->name('cars.liked');
+
 
     Route::get('/reservations/{car}', [ReservationController::class, 'create'])->name('reservations.create');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');

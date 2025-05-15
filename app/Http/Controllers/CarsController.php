@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Brand;
+use App\Models\Rating;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class CarsController extends Controller
@@ -147,4 +149,12 @@ class CarsController extends Controller
 
         return redirect()->route('mypage')->with('success', 'Car deleted successfully.');
     }
+    public function myLikedCars()
+{
+    $likedCars = auth()->user()->likedCars()->with('brand')->get();
+
+    return view('cars.my_liked', compact('likedCars'));
+}
+    
+
 }

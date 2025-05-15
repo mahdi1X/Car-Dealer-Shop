@@ -27,112 +27,122 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md custom-navbar fixed-top">
-            <div class="container">
-                <!-- Logo -->
-                <a class="navbar-brand d-flex align-items-center animated-border" href="{{ url('/') }}">
-                    <img src="{{ asset('storage/common-images/WhatsApp Image 2025-05-01 at 20.15.24_0501f586.jpg') }}"
-                        alt="CarMart Logo">
-                </a>
+       <nav class="navbar navbar-expand-md custom-navbar fixed-top">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center animated-border" href="{{ url('/') }}">
+            <img src="{{ asset('storage/common-images/WhatsApp Image 2025-05-01 at 20.15.24_0501f586.jpg') }}" alt="CarMart Logo">
+        </a>
 
-                <!-- Toggler -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar collapse -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto align-items-center">
 
                 @if (Auth::check() && Auth::user()->role == 'customer')
-                    <!-- Search bar (centered) -->
-                    <form class="d-flex mx-auto" action="{{ route('cars.index') }}" method="GET"
-                        style="max-width: 400px; width: 100%;">
-                        <input class="form-control me-2" type="search" name="q" placeholder="Search brands..."
-                            aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit"
-                            style="background-color: #4b4b4b">Search</button>
-                    </form>
-                    <li class="nav-item">
-                        <a class="navbar-brand animated-border"
-                            href="{{ route('recommended.cars') }}">Recommended</a>
+                    <!-- Search form as a nav-item with margin -->
+                    <li class="nav-item mx-3">
+                        <form class="d-flex" action="{{ route('cars.index') }}" method="GET" style="max-width: 300px; width: 100%;">
+                            <input class="form-control me-2" type="search" name="q" placeholder="Search brands..." aria-label="Search">
+                            <button class="btn btn-outline-light" type="submit" style="background-color: #4b4b4b">
+                                <i class="bi bi-search me-1"></i> Search
+                            </button>
+                        </form>
                     </li>
-                @endauth
 
-                <!-- Navigation links -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto align-items-center">
+                    <!-- Recommended nav item -->
+                    <li class="nav-item">
+                        <a style="color: #00d466" class="navbar-brand animated-border" href="{{ route('recommended.cars') }}">
+                            <i class="bi bi-star-fill me-1"></i> Recommended
+                        </a>
+                    </li>
+                @endif
 
-               
+                {{-- Then the rest of nav items here --}}
+                @guest
+                    {{-- Non Logged In User Routes --}}
+                @else
+                    @if (Auth::user()->role == 'admin')
                         <li class="nav-item">
-                            <a class="navbar-brand animated-border" href="{{ route('policy') }}">Policies</a>
+                            <a class="navbar-brand animated-border" href="{{ url('admin_users') }}">
+                                <i class="bi bi-shield-lock-fill me-1"></i> Admins
+                            </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand animated-border" href="{{ route('brands.index') }}">
+                                <i class="bi bi-tags-fill me-1"></i> Brands
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand animated-border" href="{{ route('analytics.index') }}">
+                                <i class="bi bi-graph-up me-1"></i> Analytics
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="navbar-brand animated-border" href="{{ route('mypage') }}">
+                                <i class="bi bi-card-list me-1"></i> My Listings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand animated-border" href="{{ route('reservations.index') }}">
+                                <i class="bi bi-calendar-check-fill me-1"></i> My Reserved Cars
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand animated-border" href="{{ route('cars.liked') }}">
+                                <i class="bi bi-heart-fill me-1"></i> My Liked Cars
+                            </a>
+                        </li>
+                    @endif
+                @endguest
 
-                        @guest
-                            {{-- Non Logged In User Routes --}}
-                        @else
-                            {{-- Logged In User --}}
-                            @if (Auth::user()->role == 'admin')
-                                <li class="nav-item">
-                                    <a class="navbar-brand animated-border" href="{{ url('admin_users') }}">Admins</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="navbar-brand animated-border"
-                                        href="{{ route('brands.index') }}">Brands</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="navbar-brand animated-border"
-                                        href="{{ route('analytics.index') }}">Analytics</a>
-                                </li>
-                            @else
-                           
-                                <li class="nav-item">
-                                    <a class="navbar-brand animated-border" href="{{ route('mypage') }}">My
-                                        Listings</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="navbar-brand animated-border" href="{{ route('reservations.index') }}">My
-                                        Reserved Cars</a>
-                                </li>
-                            @endif
-                        @endguest
+                <li class="nav-item">
+                    <a style="color: #000000" class="navbar-brand animated-border" href="{{ route('policy') }}">
+                        <i class="bi bi-file-earmark-text-fill me-1"></i> Policies
+                    </a>
+                </li>
 
-
-
-
-
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="navbar-brand animated-border"
-                                        href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="navbar-brand animated-border"
-                                        href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
-                                    data-bs-toggle="dropdown">
-                                    {{ Auth::user()->name }}
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a style="color: #00bcd4" class="navbar-brand animated-border" href="{{ route('login') }}">
+                                <i class="bi bi-box-arrow-in-right me-1"></i> {{ __('Login') }}
+                            </a>
+                        </li>
+                    @endif
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a style="color: #00bcd4" class="navbar-brand animated-border" href="{{ route('register') }}">
+                                <i class="bi bi-person-plus-fill me-1"></i> {{ __('Register') }}
+                            </a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i> {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                               {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <!-- Main content -->
     <main class="py-0" style="margin-top: 80px;">

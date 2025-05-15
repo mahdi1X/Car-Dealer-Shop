@@ -37,4 +37,15 @@ class Car extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+    public function likes()
+{
+    return $this->hasMany(Like::class);
+}
+
+
+public function likedByUsers()
+{
+    return $this->belongsToMany(User::class, 'likes')->withPivot('like')->withTimestamps();
+}
+
 }

@@ -66,16 +66,11 @@ class RecommendedController extends Controller
     }
     public function recommended()
     {
-        $cars = Car::query()->whereNull('created_by_id');
-        if (Auth::check()) {
-            $cars = $cars->orWhere('created_by_id', '!=', Auth::user()->id);
-        }
-        $cars = $cars->inRandomOrder()->take(8)->get();
-        // dd($cars->count());
-        // Check if there are any cars fetched
-        if (!$cars->count()) {
-            return view('recommended', compact('cars'))->with('message', 'No cars found.');
-        }
+         $cars = Car::withCount('likes')
+               ->orderBy('likes_count', 'desc')
+               ->take(10)  // limit top 10 or any number you want
+               ->get();
+    
 
 
 

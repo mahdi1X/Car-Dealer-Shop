@@ -15,13 +15,17 @@
 </head>
 
 <div class="container">
-    <h2>📊 Top 5 Reserved Brands (Pie Chart)</h2>
+     <br> <br><br>
+    <h2>📊 Top 5 Reserved Brands (Pie Chart):</h2>
+     <br> <br><br>
     <canvas id="brandPieChart"></canvas>
-
-    <h2>👤 Top 5 Users by Reservations (Bar Chart)</h2>
+      <br> <br><br>
+    <h2>👤 Top 5 Users by Reservations (Bar Chart):</h2>
+      <br> <br><br>
     <canvas id="userBarChart"></canvas>
-
-    <h2>📅 Reservation Trends by Month (Line Chart)</h2>
+  <br> <br><br>
+    <h2>📅 Reservation Trends by Month (Line Chart):</h2>
+      <br> <br><br>
     <canvas id="trendLineChart"></canvas>
 </div>
 
@@ -31,7 +35,7 @@
         // Passing the data to JavaScript variables
         const brandLabels = {!! json_encode($topBrands->pluck('name')) !!};
         const brandData = {!! json_encode($topBrands->pluck('reservation_count')) !!};
-
+        
         const userLabels = {!! json_encode($topUsers->pluck('name')) !!};
         const userData = {!! json_encode($topUsers->pluck('reservations_count')) !!};
 
