@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container my-5">
-        <h1 class="mb-4 text-center">Reservations Dashboard</h1>
+        <br>
+        <h1 class="mb-4 text-center"><b>Reservations Dashboard</b></h1>
+    
 
         <!-- Success Message -->
         @if (session('success'))
@@ -146,3 +148,4 @@
         </div>
     </div>
 @endsection
+

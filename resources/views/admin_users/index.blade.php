@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container mt-4">
-        <h1 class="mb-4">Admin Users</h1>
+        <br>
+        <h1 class="mb-4 text-center">Admin Users</h1>
         <a href="{{ route('admin_users.create') }}" class="btn btn-primary mb-3">Create New Admin</a>
 
         @if (session('success'))
