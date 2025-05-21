@@ -48,23 +48,23 @@ class ReservationController extends Controller
             "car_id" => "required",
             "reservation_date" => "required",
         ]);
-    
+
         // Check if the car is already reserved by *any* user with a pending reservation
         $existingReservation = Reservation::where("car_id", $validatedData['car_id'])
             ->where("state", StatesEnum::PENDING)
             ->first();
-    
+
         if ($existingReservation) {
             return Redirect::back()->with('msg', 'Car already reserved');
         }
-    
+
         $validatedData['user_id'] = Auth::id();
-    
+
         Reservation::create($validatedData);
-    
+
         return Redirect::back()->with('msg', 'Reserved Successfully');
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -110,6 +110,33 @@ class ReservationController extends Controller
         $reservation->delete();
         return redirect()->route('reservations.index')->with('success', 'Reservation completed successfully.');
     }
-    
+    public function calendar()
+    {
+        return view('reservations.calendar');
+    }
+    // ReservationController.php
+    public function calendarEvents()
+    {
+        $reservations = Auth::user()
+            ->reservations()
+            ->with('car.brand') // eager load car and brand
+            ->get();
+
+        $events = $reservations->map(function ($reservation) {
+            return [
+                'title' => $reservation->car->brand->name . ' - ' . $reservation->car->model,
+                'start' => $reservation->start_date,
+                // FullCalendar uses exclusive end, so we add +1 day to show the last day
+                'end' => \Carbon\Carbon::parse($reservation->end_date)->addDay()->toDateString(),
+                'color' => '#4b8b91',
+                'textColor' => '#fff',
+            ];
+        });
+
+        return response()->json($events);
+    }
+
+
+
 
 }

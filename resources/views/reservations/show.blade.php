@@ -3,8 +3,9 @@
 
 @section('content')
 <div class="container">
-    <h1>Reservation Details</h1>
-
+    <br>
+    <h1>Reservation Details:</h1>
+    <br>
     <div class="card">
         <div class="card-header">
             <h2>Reservation ID: {{ $reservation->id }}</h2>

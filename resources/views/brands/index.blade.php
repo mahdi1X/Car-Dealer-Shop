@@ -14,17 +14,19 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @forelse($brands as $brand)
-            <div class="car-card col">
+            <div  class="car-card col">
+                <a href="{{ route('brands.show', $brand->id) }}">
                 <div class="card h-100 shadow-sm border-0">
                     @if($brand->icon)
-                        <img src="{{ asset('storage/' . $brand->icon) }}" class="card-img-top p-3" alt="{{ $brand->name }}" style="max-height: 150px; object-fit: contain;">
+                        <img  src="{{ asset('storage/' . $brand->icon) }}" class="card-img-top p-3" alt="{{ $brand->name }}" style="max-height: 150px; object-fit: contain;">
                     @endif
-                    <div class="card-body">
+                    <div  class="card-body">
                         <h5 class="card-title">{{ $brand->name }}</h5>
-                        <a href="{{ route('brands.show', $brand->id) }}" class="btn btn-outline-primary">View Details</a>
-                        <a href="{{ route('brands.edit', $brand->id) }}" class="btn btn-outline-primary">Update Brands</a>
+                        {{--<a href="{{ route('brands.show', $brand->id) }}" class="btn btn-outline-primary">View Details</a>--}}
+                        <a href="{{ route('brands.edit', $brand->id) }}" class="btn btn-outline-primary">Update Brand</a>
                     </div>
                 </div>
+                </a>
             </div>
         @empty
             <div class="col">

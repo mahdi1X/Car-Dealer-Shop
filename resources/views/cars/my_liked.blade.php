@@ -51,7 +51,7 @@
 }
 
 .car-card:hover {
-    box-shadow: 0 0 18px rgba(0, 255, 255, 0.7);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.7);
     border-color: rgb(81, 91, 91);
     transform: translateY(-4px);
 }

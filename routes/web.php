@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/brands/create', [BrandsController::class, 'create'])->name('brands.create');
     Route::post('/brands', [BrandsController::class, 'store'])->name('brands.store');
-    Route::get('/admin/analytics',[AdminDashboardController::class,'show'])->name('analytics.index');
+    Route::get('/admin/analytics', [AdminDashboardController::class, 'show'])->name('analytics.index');
 
     Route::get('/cars/create', [CarsController::class, 'showCreateForm'])->name('cars.create');
     Route::get('/cars/{car}/edit', [CarsController::class, 'edit'])->name('cars.edit');
@@ -50,6 +50,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reservation/{reservation}', [ReservationController::class, 'show'])->name('reservations.show');
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
     Route::post('/reservations/{reservation}/cancel', [ReservationController::class, 'cancelReservation'])->name('reservations.cancel');
+    Route::get('/my-reservations/calendar', [ReservationController::class, 'calendar'])->name('reservations.calendar');
+    Route::get('/reservations/events', [ReservationController::class, 'calendarEvents'])->name('reservations.events');
+
+
     // Route::post(uri: '/reservations/{reservation}/complete', [ReservationController::class, 'cancelReservation'])->name('reservations.completed');
     Route::post('/reservations/{reservation}/complete', [ReservationController::class, 'completeReservation'])->name('reservations.complete');
     Route::get('/reservations/{reservation}/view', [ReservationController::class, 'view'])->name('reservations.view');
