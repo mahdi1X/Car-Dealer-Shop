@@ -340,12 +340,6 @@
             line-height: 1;
         }
 
-
-
-
-
-
-
         /* Prevent content jumping when navbar becomes fixed */
     </style>
 
@@ -354,7 +348,7 @@
         window.addEventListener('load', function() {
             const loader = document.getElementById('global-loader');
             if (loader) {
-                loader.style.transition = 'opacity 2s ease';
+                loader.style.transition = 'opacity 0s ease';
                 loader.style.opacity = '0';
                 setTimeout(() => {
                     loader.style.display = 'none';
