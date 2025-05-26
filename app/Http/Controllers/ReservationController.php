@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 
 class ReservationController extends Controller
@@ -114,26 +115,47 @@ class ReservationController extends Controller
     {
         return view('reservations.calendar');
     }
-    // ReservationController.php
+
     public function calendarEvents()
     {
-        $reservations = Auth::user()
-            ->reservations()
-            ->with('car.brand') // eager load car and brand
-            ->get();
+        try {
+            $reservations = Auth::user()
+                ->reservations()
+                ->with(['car.brand'])
+                ->whereIn('state', [
+                    StatesEnum::PENDING,
+                    StatesEnum::COMPLETED,
+                    StatesEnum::CANCELED
+                ])
+                ->whereNotNull('start_date')
+                ->whereNotNull('end_date')
+                ->where('start_date', '!=', '0000-00-00')
+                ->where('end_date', '!=', '0000-00-00')
+                ->get();
 
-        $events = $reservations->map(function ($reservation) {
-            return [
-                'title' => $reservation->car->brand->name . ' - ' . $reservation->car->model,
-                'start' => $reservation->start_date,
-                // FullCalendar uses exclusive end, so we add +1 day to show the last day
-                'end' => \Carbon\Carbon::parse($reservation->end_date)->addDay()->toDateString(),
-                'color' => '#4b8b91',
-                'textColor' => '#fff',
-            ];
-        });
+            $events = $reservations->map(function ($reservation) {
+                if (!$reservation->car || !$reservation->car->brand) {
+                    return null;
+                }
 
-        return response()->json($events);
+                return [
+                    'id' => $reservation->id,
+                    'title' => $reservation->car->brand->name . ' - ' . $reservation->car->model,
+                    'start' => Carbon::parse($reservation->start_date)->toDateString(),
+                    'end' => Carbon::parse($reservation->end_date)->addDay()->toDateString(),
+                    'color' => $reservation->state === StatesEnum::COMPLETED ? '#28a745' : '#4b8b91',
+                    'textColor' => '#ffffff',
+                    'extendedProps' => [
+                        'state' => $reservation->state,
+                    ]
+                ];
+            })->filter()->values();
+
+            return response()->json($events);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching calendar events: ' . $e->getMessage());
+            return response()->json(['error' => 'Could not load events.'], 500);
+        }
     }
 
 

@@ -1,0 +1,404 @@
+Date : 2025-05-23 16:45:44
+Directory : c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb
+Total : 298 files,  35336 codes, 4807 comments, 5071 blanks, all 45214 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| SCSS       |        168 |     11,798 |      2,498 |      2,718 |     17,014 |
+| JSON       |          4 |     11,772 |          0 |          4 |     11,776 |
+| JavaScript |         20 |      5,072 |      1,134 |        921 |      7,127 |
+| PHP        |         88 |      4,389 |      1,072 |        980 |      6,441 |
+| PostCSS    |         14 |      2,184 |        101 |        420 |      2,705 |
+| Markdown   |          1 |         48 |          0 |         21 |         69 |
+| vue        |          2 |         42 |          0 |          6 |         48 |
+| XML        |          1 |         31 |          2 |          1 |         34 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                       |        298 |     35,336 |      4,807 |      5,071 |     45,214 |
+| . (Files)                                                                                                               |          9 |     11,902 |          3 |         31 |     11,936 |
+| app                                                                                                                     |         25 |        808 |        366 |        282 |      1,456 |
+| app\Enums                                                                                                               |          1 |         13 |          0 |          5 |         18 |
+| app\Http                                                                                                                |         18 |        653 |        335 |        233 |      1,221 |
+| app\Http\Controllers                                                                                                    |         18 |        653 |        335 |        233 |      1,221 |
+| app\Http\Controllers (Files)                                                                                            |         12 |        556 |        203 |        186 |        945 |
+| app\Http\Controllers\Auth                                                                                               |          6 |         97 |        132 |         47 |        276 |
+| app\Models                                                                                                              |          5 |        130 |         23 |         39 |        192 |
+| app\Providers                                                                                                           |          1 |         12 |          8 |          5 |         25 |
+| bootstrap                                                                                                               |          2 |         18 |          2 |          5 |         25 |
+| config                                                                                                                  |         10 |        477 |        556 |        191 |      1,224 |
+| database                                                                                                                |         15 |        357 |         95 |         69 |        521 |
+| database\factories                                                                                                      |          1 |         25 |         14 |          6 |         45 |
+| database\migrations                                                                                                     |         13 |        318 |         76 |         58 |        452 |
+| database\seeders                                                                                                        |          1 |         14 |          5 |          5 |         24 |
+| public                                                                                                                  |        115 |     13,126 |      2,438 |      2,687 |     18,251 |
+| public (Files)                                                                                                          |          1 |          9 |          3 |          6 |         18 |
+| public\css                                                                                                              |          3 |        312 |         19 |         73 |        404 |
+| public\js                                                                                                               |          4 |        115 |         56 |         39 |        210 |
+| public\js (Files)                                                                                                       |          3 |         94 |         56 |         36 |        186 |
+| public\js\components                                                                                                    |          1 |         21 |          0 |          3 |         24 |
+| public\lib                                                                                                              |         23 |      6,791 |      1,111 |      1,210 |      9,112 |
+| public\lib\animate                                                                                                      |          2 |      1,258 |         18 |        316 |      1,592 |
+| public\lib\counterup                                                                                                    |          1 |          1 |         10 |          1 |         12 |
+| public\lib\easing                                                                                                       |          2 |        154 |          9 |          8 |        171 |
+| public\lib\owlcarousel                                                                                                  |          8 |      2,118 |        967 |        489 |      3,574 |
+| public\lib\owlcarousel (Files)                                                                                          |          2 |      1,903 |        913 |        467 |      3,283 |
+| public\lib\owlcarousel\assets                                                                                           |          6 |        215 |         54 |         22 |        291 |
+| public\lib\tempusdominus                                                                                                |          6 |      2,781 |         75 |        347 |      3,203 |
+| public\lib\tempusdominus\css                                                                                            |          2 |        396 |         10 |          8 |        414 |
+| public\lib\tempusdominus\js                                                                                             |          4 |      2,385 |         65 |        339 |      2,789 |
+| public\lib\waypoints                                                                                                    |          2 |          6 |          6 |          1 |         13 |
+| public\lib\wow                                                                                                          |          2 |        473 |         26 |         48 |        547 |
+| public\sass                                                                                                             |          2 |          7 |          5 |          5 |         17 |
+| public\scss                                                                                                             |         82 |      5,892 |      1,244 |      1,354 |      8,490 |
+| public\scss (Files)                                                                                                     |          1 |         15 |          1 |         12 |         28 |
+| public\scss\bootstrap                                                                                                   |         81 |      5,877 |      1,243 |      1,342 |      8,462 |
+| public\scss\bootstrap\scss                                                                                              |         81 |      5,877 |      1,243 |      1,342 |      8,462 |
+| public\scss\bootstrap\scss (Files)                                                                                      |         39 |      4,251 |        910 |      1,001 |      6,162 |
+| public\scss\bootstrap\scss\forms                                                                                        |          9 |        569 |         96 |        114 |        779 |
+| public\scss\bootstrap\scss\helpers                                                                                      |          7 |         77 |         12 |         19 |        108 |
+| public\scss\bootstrap\scss\mixins                                                                                       |         24 |        749 |        161 |        142 |      1,052 |
+| public\scss\bootstrap\scss\utilities                                                                                    |          1 |         29 |         12 |          7 |         48 |
+| public\scss\bootstrap\scss\vendor                                                                                       |          1 |        202 |         52 |         59 |        313 |
+| resources                                                                                                               |        117 |      8,568 |      1,337 |      1,766 |     11,671 |
+| resources\css                                                                                                           |          1 |          3 |          0 |          1 |          4 |
+| resources\js                                                                                                            |          3 |         31 |         48 |         20 |         99 |
+| resources\js (Files)                                                                                                    |          2 |         10 |         48 |         17 |         75 |
+| resources\js\components                                                                                                 |          1 |         21 |          0 |          3 |         24 |
+| resources\sass                                                                                                          |          2 |          7 |          5 |          5 |         17 |
+| resources\scss                                                                                                          |         82 |      5,892 |      1,244 |      1,354 |      8,490 |
+| resources\scss (Files)                                                                                                  |          1 |         15 |          1 |         12 |         28 |
+| resources\scss\bootstrap                                                                                                |         81 |      5,877 |      1,243 |      1,342 |      8,462 |
+| resources\scss\bootstrap\scss                                                                                           |         81 |      5,877 |      1,243 |      1,342 |      8,462 |
+| resources\scss\bootstrap\scss (Files)                                                                                   |         39 |      4,251 |        910 |      1,001 |      6,162 |
+| resources\scss\bootstrap\scss\forms                                                                                     |          9 |        569 |         96 |        114 |        779 |
+| resources\scss\bootstrap\scss\helpers                                                                                   |          7 |         77 |         12 |         19 |        108 |
+| resources\scss\bootstrap\scss\mixins                                                                                    |         24 |        749 |        161 |        142 |      1,052 |
+| resources\scss\bootstrap\scss\utilities                                                                                 |          1 |         29 |         12 |          7 |         48 |
+| resources\scss\bootstrap\scss\vendor                                                                                    |          1 |        202 |         52 |         59 |        313 |
+| resources\views                                                                                                         |         29 |      2,635 |         40 |        386 |      3,061 |
+| resources\views (Files)                                                                                                 |          5 |        631 |         11 |         85 |        727 |
+| resources\views\admin_users                                                                                             |          5 |        180 |          6 |         28 |        214 |
+| resources\views\auth                                                                                                    |          6 |        501 |          5 |         94 |        600 |
+| resources\views\auth (Files)                                                                                            |          3 |        367 |          5 |         64 |        436 |
+| resources\views\auth\passwords                                                                                          |          3 |        134 |          0 |         30 |        164 |
+| resources\views\brands                                                                                                  |          4 |        223 |          2 |         22 |        247 |
+| resources\views\cars                                                                                                    |          4 |        402 |          8 |         52 |        462 |
+| resources\views\layouts                                                                                                 |          1 |        384 |          7 |         62 |        453 |
+| resources\views\reservations                                                                                            |          4 |        314 |          1 |         43 |        358 |
+| routes                                                                                                                  |          2 |         53 |          2 |         27 |         82 |
+| tests                                                                                                                   |          3 |         27 |          8 |         13 |         48 |
+| tests (Files)                                                                                                           |          1 |          6 |          1 |          4 |         11 |
+| tests\Feature                                                                                                           |          1 |         11 |          4 |          5 |         20 |
+| tests\Unit                                                                                                              |          1 |         10 |          3 |          4 |         17 |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\README.md                                                            | Markdown   |         48 |          0 |         21 |         69 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Enums\StatesEnum.php                                             | PHP        |         13 |          0 |          5 |         18 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\AdminDashboardController.php                    | PHP        |         46 |         27 |         19 |         92 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\AdminUserController.php                         | PHP        |         67 |          0 |         15 |         82 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\Auth\ConfirmPasswordController.php              | PHP        |         13 |         20 |          7 |         40 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\Auth\ForgotPasswordController.php               | PHP        |          8 |         10 |          5 |         23 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\Auth\LoginController.php                        | PHP        |         14 |         20 |          7 |         41 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\Auth\RegisterController.php                     | PHP        |         38 |         47 |         15 |        100 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\Auth\ResetPasswordController.php                | PHP        |          9 |         15 |          6 |         30 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\Auth\VerificationController.php                 | PHP        |         15 |         20 |          7 |         42 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\BrandsController.php                            | PHP        |         56 |         25 |         23 |        104 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\CarsController.php                              | PHP        |         96 |         27 |         38 |        161 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\CommonController.php                            | PHP        |         11 |          2 |          5 |         18 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\Controller.php                                  | PHP        |          9 |          0 |          4 |         13 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\HomeController.php                              | PHP        |         14 |         10 |          5 |         29 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\LikeController.php                              | PHP        |         45 |          3 |         10 |         58 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\MyPageController.php                            | PHP        |         32 |         29 |         16 |         77 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\PolicyController.php                            | PHP        |         28 |         27 |         10 |         65 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\RecommendedController.php                       | PHP        |         38 |         28 |         15 |         81 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Http\Controllers\ReservationController.php                       | PHP        |        114 |         25 |         26 |        165 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Models\Brand.php                                                 | PHP        |         15 |          3 |          6 |         24 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Models\Car.php                                                   | PHP        |         39 |          3 |         10 |         52 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Models\Like.php                                                  | PHP        |         15 |          0 |          7 |         22 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Models\Reservation.php                                           | PHP        |         20 |          0 |          6 |         26 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Models\User.php                                                  | PHP        |         41 |         17 |         10 |         68 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\app\Providers\AppServiceProvider.php                                 | PHP        |         12 |          8 |          5 |         25 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\bootstrap\app.php                                                    | PHP        |         14 |          2 |          3 |         19 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\bootstrap\providers.php                                              | PHP        |          4 |          0 |          2 |          6 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\composer.json                                                        | JSON       |         74 |          0 |          1 |         75 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\composer.lock                                                        | JSON       |      8,413 |          0 |          1 |      8,414 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\app.php                                                       | PHP        |         22 |         82 |         23 |        127 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\auth.php                                                      | PHP        |         28 |         74 |         14 |        116 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\cache.php                                                     | PHP        |         57 |         34 |         18 |        109 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\database.php                                                  | PHP        |        108 |         43 |         23 |        174 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\filesystems.php                                               | PHP        |         33 |         32 |         13 |         78 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\logging.php                                                   | PHP        |         79 |         33 |         21 |        133 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\mail.php                                                      | PHP        |         55 |         43 |         19 |        117 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\queue.php                                                     | PHP        |         52 |         44 |         17 |        113 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\services.php                                                  | PHP        |         20 |         11 |          8 |         39 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\config\session.php                                                   | PHP        |         23 |        160 |         35 |        218 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\factories\UserFactory.php                                   | PHP        |         25 |         14 |          6 |         45 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\0001_01_01_000000_create_users_table.php         | PHP        |         38 |          6 |          6 |         50 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\0001_01_01_000001_create_cache_table.php         | PHP        |         25 |          6 |          5 |         36 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\0001_01_01_000002_create_jobs_table.php          | PHP        |         46 |          6 |          6 |         58 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2024_12_30_122131_create_cars_table.php          | PHP        |         25 |          6 |          4 |         35 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2024_12_30_133357_create_brands_table.php        | PHP        |         20 |          6 |          4 |         30 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2024_12_30_134310_add_brand_id_to_cars_table.php | PHP        |         21 |         10 |          3 |         34 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2025_01_13_115146_alter_users_table.php          | PHP        |         21 |          6 |          4 |         31 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2025_01_13_134058_create_reservations_table.php  | PHP        |         24 |          6 |          4 |         34 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2025_05_02_153047_add_created_to_cars.php        | PHP        |         20 |          6 |          4 |         30 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2025_05_02_160720_add_role_to_users.php          | PHP        |         19 |          6 |          4 |         29 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2025_05_02_192546_add_km_recorded_to_cars.php    | PHP        |         19 |          6 |          4 |         29 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2025_05_02_202252_alter_reservations_status.php  | PHP        |         18 |          6 |          4 |         28 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\migrations\2025_05_15_175116_create_likes_table.php         | PHP        |         22 |          0 |          6 |         28 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\database\seeders\DatabaseSeeder.php                                  | PHP        |         14 |          5 |          5 |         24 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\package-lock.json                                                    | JSON       |      3,263 |          0 |          1 |      3,264 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\package.json                                                         | JSON       |         22 |          0 |          1 |         23 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\phpunit.xml                                                          | XML        |         31 |          2 |          1 |         34 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\postcss.config.js                                                    | JavaScript |          6 |          0 |          1 |          7 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\css\app.css                                                   | PostCSS    |          3 |          0 |          1 |          4 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\css\bootstrap.min.css                                         | PostCSS    |          1 |          5 |          1 |          7 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\css\style.css                                                 | PostCSS    |        308 |         14 |         71 |        393 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\index.php                                                     | PHP        |          9 |          3 |          6 |         18 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\js\app.js                                                     | JavaScript |          6 |         25 |          9 |         40 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\js\bootstrap.js                                               | JavaScript |          4 |         23 |          8 |         35 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\js\components\ExampleComponent.vue                            | vue        |         21 |          0 |          3 |         24 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\js\main.js                                                    | JavaScript |         84 |          8 |         19 |        111 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\animate\animate.css                                       | PostCSS    |      1,256 |         11 |        313 |      1,580 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\animate\animate.min.css                                   | PostCSS    |          2 |          7 |          3 |         12 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\counterup\counterup.min.js                                | JavaScript |          1 |         10 |          1 |         12 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\easing\easing.js                                          | JavaScript |        153 |          9 |          7 |        169 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\easing\easing.min.js                                      | JavaScript |          1 |          0 |          1 |          2 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\owlcarousel\assets\owl.carousel.css                       | PostCSS    |        132 |         23 |         16 |        171 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\owlcarousel\assets\owl.carousel.min.css                   | PostCSS    |          1 |          5 |          0 |          6 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\owlcarousel\assets\owl.theme.default.css                  | PostCSS    |         40 |          8 |          3 |         51 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\owlcarousel\assets\owl.theme.default.min.css              | PostCSS    |          1 |          5 |          0 |          6 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\owlcarousel\assets\owl.theme.green.css                    | PostCSS    |         40 |          8 |          3 |         51 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\owlcarousel\assets\owl.theme.green.min.css                | PostCSS    |          1 |          5 |          0 |          6 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\owlcarousel\owl.carousel.js                               | JavaScript |      1,901 |        908 |        467 |      3,276 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\owlcarousel\owl.carousel.min.js                           | JavaScript |          2 |          5 |          0 |          7 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\tempusdominus\css\tempusdominus-bootstrap-4.css           | PostCSS    |        198 |          5 |          4 |        207 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\tempusdominus\css\tempusdominus-bootstrap-4.min.css       | PostCSS    |        198 |          5 |          4 |        207 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\tempusdominus\js\moment-timezone.min.js                   | JavaScript |          1 |          0 |          0 |          1 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\tempusdominus\js\moment.min.js                            | JavaScript |          1 |          0 |          0 |          1 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\tempusdominus\js\tempusdominus-bootstrap-4.js             | JavaScript |      2,381 |         60 |        339 |      2,780 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\tempusdominus\js\tempusdominus-bootstrap-4.min.js         | JavaScript |          2 |          5 |          0 |          7 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\waypoints\links.php                                       | PHP        |          5 |          0 |          1 |          6 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\waypoints\waypoints.min.js                                | JavaScript |          1 |          6 |          0 |          7 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\wow\wow.js                                                | JavaScript |        472 |         24 |         47 |        543 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\lib\wow\wow.min.js                                            | JavaScript |          1 |          2 |          1 |          4 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\sass\_variables.scss                                          | SCSS       |          4 |          2 |          2 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\sass\app.scss                                                 | SCSS       |          3 |          3 |          3 |          9 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap.scss                                           | SCSS       |         15 |          1 |         12 |         28 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_accordion.scss                           | SCSS       |         89 |          8 |         22 |        119 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_alert.scss                               | SCSS       |         34 |         13 |         11 |         58 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_badge.scss                               | SCSS       |         20 |          6 |          4 |         30 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_breadcrumb.scss                          | SCSS       |         24 |          1 |          4 |         29 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_button-group.scss                        | SCSS       |         90 |         23 |         27 |        140 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_buttons.scss                             | SCSS       |         74 |         16 |         22 |        112 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_card.scss                                | SCSS       |        153 |         27 |         36 |        216 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_carousel.scss                            | SCSS       |        158 |         41 |         31 |        230 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_close.scss                               | SCSS       |         30 |          5 |          6 |         41 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_containers.scss                          | SCSS       |         27 |          8 |          7 |         42 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_dropdown.scss                            | SCSS       |        186 |         19 |         36 |        241 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_forms.scss                               | SCSS       |          9 |          0 |          1 |         10 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_functions.scss                           | SCSS       |        133 |         38 |         35 |        206 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_grid.scss                                | SCSS       |         11 |          6 |          6 |         23 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_helpers.scss                             | SCSS       |          7 |          0 |          1 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_images.scss                              | SCSS       |         22 |         13 |          8 |         43 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_list-group.scss                          | SCSS       |        111 |         27 |         37 |        175 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_mixins.scss                              | SCSS       |         25 |         10 |          8 |         43 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_modal.scss                               | SCSS       |        160 |         35 |         34 |        229 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_nav.scss                                 | SCSS       |         96 |         20 |         24 |        140 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_navbar.scss                              | SCSS       |        204 |         47 |         56 |        307 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_offcanvas.scss                           | SCSS       |         68 |          0 |         10 |         78 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_pagination.scss                          | SCSS       |         51 |          3 |         11 |         65 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_popover.scss                             | SCSS       |        134 |          5 |         20 |        159 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_progress.scss                            | SCSS       |         39 |          3 |          7 |         49 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_reboot.scss                              | SCSS       |        334 |        146 |        142 |        622 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_root.scss                                | SCSS       |         11 |          3 |          3 |         17 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_spinners.scss                            | SCSS       |         49 |         12 |          9 |         70 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_tables.scss                              | SCSS       |         78 |         43 |         30 |        151 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_toasts.scss                              | SCSS       |         44 |          0 |          8 |         52 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_tooltip.scss                             | SCSS       |         93 |          5 |         18 |        116 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_transitions.scss                         | SCSS       |         16 |          2 |          4 |         22 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_type.scss                                | SCSS       |         67 |         16 |         22 |        105 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_utilities.scss                           | SCSS       |        551 |         41 |          3 |        595 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\_variables.scss                           | SCSS       |        955 |        231 |        279 |      1,465 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\bootstrap-grid.scss                       | SCSS       |         50 |          8 |          8 |         66 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\bootstrap-reboot.scss                     | SCSS       |          6 |          8 |          2 |         16 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\bootstrap-utilities.scss                  | SCSS       |          6 |          9 |          4 |         19 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\bootstrap.scss                            | SCSS       |         36 |         12 |          5 |         53 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\forms\_floating-labels.scss               | SCSS       |         51 |          4 |          7 |         62 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\forms\_form-check.scss                    | SCSS       |        119 |          9 |         25 |        153 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\forms\_form-control.scss                  | SCSS       |        156 |         33 |         31 |        220 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\forms\_form-range.scss                    | SCSS       |         71 |          7 |         14 |         92 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\forms\_form-select.scss                   | SCSS       |         54 |          6 |          8 |         68 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\forms\_form-text.scss                     | SCSS       |          7 |          3 |          2 |         12 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\forms\_input-group.scss                   | SCSS       |         81 |         21 |         20 |        122 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\forms\_labels.scss                        | SCSS       |         27 |          5 |          5 |         37 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\forms\_validation.scss                    | SCSS       |          3 |          8 |          2 |         13 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\helpers\_clearfix.scss                    | SCSS       |          3 |          0 |          1 |          4 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\helpers\_colored-links.scss               | SCSS       |         11 |          0 |          2 |         13 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\helpers\_position.scss                    | SCSS       |         24 |          2 |          5 |         31 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\helpers\_ratio.scss                       | SCSS       |         21 |          1 |          5 |         27 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\helpers\_stretched-link.scss              | SCSS       |         11 |          3 |          2 |         16 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\helpers\_text-truncation.scss             | SCSS       |          3 |          3 |          2 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\helpers\_visually-hidden.scss             | SCSS       |          4 |          3 |          2 |          9 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_alert.scss                        | SCSS       |          8 |          2 |          2 |         12 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_border-radius.scss                | SCSS       |         63 |          5 |         11 |         79 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_box-shadow.scss                   | SCSS       |         16 |          0 |          3 |         19 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_breakpoints.scss                  | SCSS       |         73 |         44 |         11 |        128 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_buttons.scss                      | SCSS       |        104 |         16 |         14 |        134 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_caret.scss                        | SCSS       |         55 |          2 |          8 |         65 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_clearfix.scss                     | SCSS       |          7 |          2 |          1 |         10 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_color-scheme.scss                 | SCSS       |          5 |          2 |          1 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_container.scss                    | SCSS       |          7 |          1 |          2 |         10 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_deprecate.scss                    | SCSS       |          5 |          5 |          1 |         11 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_forms.scss                        | SCSS       |        116 |          5 |         17 |        138 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_gradients.scss                    | SCSS       |         27 |         11 |         10 |         48 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_grid.scss                         | SCSS       |         88 |         21 |         17 |        126 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_image.scss                        | SCSS       |          4 |          9 |          4 |         17 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_list-group.scss                   | SCSS       |         18 |          3 |          4 |         25 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_lists.scss                        | SCSS       |          4 |          2 |          2 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_pagination.scss                   | SCSS       |         24 |          4 |          4 |         32 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_reset-text.scss                   | SCSS       |         16 |          1 |          1 |         18 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_resize.scss                       | SCSS       |          4 |          1 |          2 |          7 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_table-variants.scss               | SCSS       |         17 |          2 |          3 |         22 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_text-truncate.scss                | SCSS       |          5 |          2 |          2 |          9 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_transition.scss                   | SCSS       |         22 |          1 |          4 |         27 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_utilities.scss                    | SCSS       |         45 |         11 |         13 |         69 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\mixins\_visually-hidden.scss              | SCSS       |         16 |          9 |          5 |         30 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\utilities\_api.scss                       | SCSS       |         29 |         12 |          7 |         48 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\public\scss\bootstrap\scss\vendor\_rfs.scss                          | SCSS       |        202 |         52 |         59 |        313 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\css\app.css                                                | PostCSS    |          3 |          0 |          1 |          4 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\js\app.js                                                  | JavaScript |          6 |         25 |          9 |         40 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\js\bootstrap.js                                            | JavaScript |          4 |         23 |          8 |         35 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\js\components\ExampleComponent.vue                         | vue        |         21 |          0 |          3 |         24 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\sass\_variables.scss                                       | SCSS       |          4 |          2 |          2 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\sass\app.scss                                              | SCSS       |          3 |          3 |          3 |          9 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap.scss                                        | SCSS       |         15 |          1 |         12 |         28 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_accordion.scss                        | SCSS       |         89 |          8 |         22 |        119 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_alert.scss                            | SCSS       |         34 |         13 |         11 |         58 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_badge.scss                            | SCSS       |         20 |          6 |          4 |         30 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_breadcrumb.scss                       | SCSS       |         24 |          1 |          4 |         29 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_button-group.scss                     | SCSS       |         90 |         23 |         27 |        140 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_buttons.scss                          | SCSS       |         74 |         16 |         22 |        112 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_card.scss                             | SCSS       |        153 |         27 |         36 |        216 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_carousel.scss                         | SCSS       |        158 |         41 |         31 |        230 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_close.scss                            | SCSS       |         30 |          5 |          6 |         41 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_containers.scss                       | SCSS       |         27 |          8 |          7 |         42 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_dropdown.scss                         | SCSS       |        186 |         19 |         36 |        241 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_forms.scss                            | SCSS       |          9 |          0 |          1 |         10 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_functions.scss                        | SCSS       |        133 |         38 |         35 |        206 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_grid.scss                             | SCSS       |         11 |          6 |          6 |         23 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_helpers.scss                          | SCSS       |          7 |          0 |          1 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_images.scss                           | SCSS       |         22 |         13 |          8 |         43 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_list-group.scss                       | SCSS       |        111 |         27 |         37 |        175 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_mixins.scss                           | SCSS       |         25 |         10 |          8 |         43 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_modal.scss                            | SCSS       |        160 |         35 |         34 |        229 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_nav.scss                              | SCSS       |         96 |         20 |         24 |        140 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_navbar.scss                           | SCSS       |        204 |         47 |         56 |        307 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_offcanvas.scss                        | SCSS       |         68 |          0 |         10 |         78 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_pagination.scss                       | SCSS       |         51 |          3 |         11 |         65 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_popover.scss                          | SCSS       |        134 |          5 |         20 |        159 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_progress.scss                         | SCSS       |         39 |          3 |          7 |         49 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_reboot.scss                           | SCSS       |        334 |        146 |        142 |        622 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_root.scss                             | SCSS       |         11 |          3 |          3 |         17 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_spinners.scss                         | SCSS       |         49 |         12 |          9 |         70 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_tables.scss                           | SCSS       |         78 |         43 |         30 |        151 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_toasts.scss                           | SCSS       |         44 |          0 |          8 |         52 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_tooltip.scss                          | SCSS       |         93 |          5 |         18 |        116 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_transitions.scss                      | SCSS       |         16 |          2 |          4 |         22 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_type.scss                             | SCSS       |         67 |         16 |         22 |        105 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_utilities.scss                        | SCSS       |        551 |         41 |          3 |        595 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\_variables.scss                        | SCSS       |        955 |        231 |        279 |      1,465 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\bootstrap-grid.scss                    | SCSS       |         50 |          8 |          8 |         66 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\bootstrap-reboot.scss                  | SCSS       |          6 |          8 |          2 |         16 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\bootstrap-utilities.scss               | SCSS       |          6 |          9 |          4 |         19 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\bootstrap.scss                         | SCSS       |         36 |         12 |          5 |         53 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\forms\_floating-labels.scss            | SCSS       |         51 |          4 |          7 |         62 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\forms\_form-check.scss                 | SCSS       |        119 |          9 |         25 |        153 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\forms\_form-control.scss               | SCSS       |        156 |         33 |         31 |        220 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\forms\_form-range.scss                 | SCSS       |         71 |          7 |         14 |         92 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\forms\_form-select.scss                | SCSS       |         54 |          6 |          8 |         68 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\forms\_form-text.scss                  | SCSS       |          7 |          3 |          2 |         12 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\forms\_input-group.scss                | SCSS       |         81 |         21 |         20 |        122 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\forms\_labels.scss                     | SCSS       |         27 |          5 |          5 |         37 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\forms\_validation.scss                 | SCSS       |          3 |          8 |          2 |         13 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\helpers\_clearfix.scss                 | SCSS       |          3 |          0 |          1 |          4 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\helpers\_colored-links.scss            | SCSS       |         11 |          0 |          2 |         13 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\helpers\_position.scss                 | SCSS       |         24 |          2 |          5 |         31 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\helpers\_ratio.scss                    | SCSS       |         21 |          1 |          5 |         27 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\helpers\_stretched-link.scss           | SCSS       |         11 |          3 |          2 |         16 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\helpers\_text-truncation.scss          | SCSS       |          3 |          3 |          2 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\helpers\_visually-hidden.scss          | SCSS       |          4 |          3 |          2 |          9 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_alert.scss                     | SCSS       |          8 |          2 |          2 |         12 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_border-radius.scss             | SCSS       |         63 |          5 |         11 |         79 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_box-shadow.scss                | SCSS       |         16 |          0 |          3 |         19 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_breakpoints.scss               | SCSS       |         73 |         44 |         11 |        128 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_buttons.scss                   | SCSS       |        104 |         16 |         14 |        134 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_caret.scss                     | SCSS       |         55 |          2 |          8 |         65 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_clearfix.scss                  | SCSS       |          7 |          2 |          1 |         10 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_color-scheme.scss              | SCSS       |          5 |          2 |          1 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_container.scss                 | SCSS       |          7 |          1 |          2 |         10 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_deprecate.scss                 | SCSS       |          5 |          5 |          1 |         11 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_forms.scss                     | SCSS       |        116 |          5 |         17 |        138 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_gradients.scss                 | SCSS       |         27 |         11 |         10 |         48 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_grid.scss                      | SCSS       |         88 |         21 |         17 |        126 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_image.scss                     | SCSS       |          4 |          9 |          4 |         17 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_list-group.scss                | SCSS       |         18 |          3 |          4 |         25 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_lists.scss                     | SCSS       |          4 |          2 |          2 |          8 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_pagination.scss                | SCSS       |         24 |          4 |          4 |         32 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_reset-text.scss                | SCSS       |         16 |          1 |          1 |         18 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_resize.scss                    | SCSS       |          4 |          1 |          2 |          7 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_table-variants.scss            | SCSS       |         17 |          2 |          3 |         22 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_text-truncate.scss             | SCSS       |          5 |          2 |          2 |          9 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_transition.scss                | SCSS       |         22 |          1 |          4 |         27 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_utilities.scss                 | SCSS       |         45 |         11 |         13 |         69 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\mixins\_visually-hidden.scss           | SCSS       |         16 |          9 |          5 |         30 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\utilities\_api.scss                    | SCSS       |         29 |         12 |          7 |         48 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\scss\bootstrap\scss\vendor\_rfs.scss                       | SCSS       |        202 |         52 |         59 |        313 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\admin_users\analytics.blade.php                      | PHP        |         82 |          6 |         10 |         98 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\admin_users\create.blade.php                         | PHP        |         12 |          0 |          3 |         15 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\admin_users\edit.blade.php                           | PHP        |         13 |          0 |          3 |         16 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\admin_users\form.blade.php                           | PHP        |         23 |          0 |          7 |         30 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\admin_users\index.blade.php                          | PHP        |         50 |          0 |          5 |         55 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\auth\login.blade.php                                 | PHP        |        162 |          4 |         26 |        192 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\auth\passwords\confirm.blade.php                     | PHP        |         41 |          0 |          9 |         50 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\auth\passwords\email.blade.php                       | PHP        |         40 |          0 |          8 |         48 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\auth\passwords\reset.blade.php                       | PHP        |         53 |          0 |         13 |         66 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\auth\register.blade.php                              | PHP        |        180 |          1 |         34 |        215 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\auth\verify.blade.php                                | PHP        |         25 |          0 |          4 |         29 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\brands\create.blade.php                              | PHP        |         51 |          0 |          8 |         59 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\brands\index.blade.php                               | PHP        |         74 |          2 |          8 |         84 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\brands\show.blade.php                                | PHP        |         56 |          0 |          4 |         60 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\brands\show2.blade.php                               | PHP        |         42 |          0 |          2 |         44 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\cars\create.blade.php                                | PHP        |         93 |          0 |         13 |        106 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\cars\index.blade.php                                 | PHP        |         85 |          6 |          9 |        100 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\cars\my_liked.blade.php                              | PHP        |         78 |          2 |         11 |         91 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\cars\show.blade.php                                  | PHP        |        146 |          0 |         19 |        165 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\home.blade.php                                       | PHP        |        299 |          0 |         26 |        325 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\layouts\app.blade.php                                | PHP        |        384 |          7 |         62 |        453 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\mypage.blade.php                                     | PHP        |        102 |          5 |         15 |        122 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\policies.blade.php                                   | PHP        |         96 |          0 |         17 |        113 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\recommended.blade.php                                | PHP        |         99 |          6 |         14 |        119 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\reservations\calendar.blade.php                      | PHP        |         98 |          1 |         15 |        114 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\reservations\create.blade.php                        | PHP        |         42 |          0 |         11 |         53 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\reservations\index.blade.php                         | PHP        |        143 |          0 |          9 |        152 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\reservations\show.blade.php                          | PHP        |         31 |          0 |          8 |         39 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\resources\views\welcome.blade.php                                    | PHP        |         35 |          0 |         13 |         48 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\routes\console.php                                                   | PHP        |          6 |          0 |          3 |          9 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\routes\web.php                                                       | PHP        |         47 |          2 |         24 |         73 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\tailwind.config.js                                                   | JavaScript |         18 |          1 |          2 |         21 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\tests\Feature\ExampleTest.php                                        | PHP        |         11 |          4 |          5 |         20 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\tests\TestCase.php                                                   | PHP        |          6 |          1 |          4 |         11 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\tests\Unit\ExampleTest.php                                           | PHP        |         10 |          3 |          4 |         17 |
+| c:\Users\HP i5\OneDrive\Desktop\Project\ProjectWeb\vite.config.js                                                       | JavaScript |         27 |          0 |          2 |         29 |
+| Total                                                                                                                   |            |     35,336 |      4,807 |      5,071 |     45,214 |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

@@ -55,6 +55,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'region' => 'required|string|max:255',
+
         ]);
     }
 
@@ -87,13 +89,65 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $profilePath = null;
+
+        if (request()->hasFile('profile_picture')) {
+            $profilePath = request()->file('profile_picture')->store('profile_pictures', 'public');
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'address' => $data['address'],
             'payment_method' => $data['payment_method'],
-            'role' => 'customer'
+            'region' => $data['region'], // if added
+            'role' => 'customer',
+            'profile_picture' => $profilePath,
         ]);
+
     }
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return view('profile', compact('user'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        // Only allow user to update their own profile
+        if ($request->user()->id !== $user->id) {
+            abort(403);
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'profile_picture' => 'nullable|image|max:2048',
+            'address' => 'nullable|string|max:255',
+            'payment_method' => 'nullable|string|in:visa_card,cash,bnpl',
+            'region' => 'required|string|in:Beirut,Mount Lebanon,North Lebanon,South Lebanon,Bekaa,Nabatieh',
+            'report' => 'nullable|string',
+        ]);
+
+        // Handle profile picture upload
+        if ($request->hasFile('profile_picture')) {
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $validated['profile_picture'] = $path;
+        }
+
+        // Convert report textarea string into array and store as JSON
+        if (!empty($validated['report'])) {
+            $validated['report'] = array_filter(array_map('trim', explode("\n", $validated['report'])));
+            $validated['report'] = json_encode($validated['report']);
+        } else {
+            $validated['report'] = json_encode([]);
+        }
+
+        $user->update($validated);
+
+        return redirect()->route('user.profile', $user->id)->with('message', 'Profile updated successfully.');
+    }
+
+
+
 }

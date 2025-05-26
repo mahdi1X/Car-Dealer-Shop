@@ -31,7 +31,8 @@
 
         </div>
     </div>
-
+    <br><br>
     <a href="{{ route('reservations.index') }}" class="btn btn-primary mt-3">Back to Reservations List</a>
+    <br><br>
 </div>
 @endsection

@@ -17,8 +17,8 @@ class LikeController extends Controller
         $user = $request->user();
 
         $like = Like::where('user_id', $user->id)
-                    ->where('car_id', $request->car_id)
-                    ->first();
+            ->where('car_id', $request->car_id)
+            ->first();
 
         if ($like) {
             // If exists, update or delete - here we toggle: if like=1 then delete, else update to 1
@@ -41,7 +41,7 @@ class LikeController extends Controller
 
         // Get total likes count and average like
         $carLikes = Like::where('car_id', $request->car_id);
-        $likesCount = $carLikes->count();
+        $likesCount = $carLikes->where('like', 1)->count();
         $likesAvg = $carLikes->avg('like');
 
         if ($request->ajax()) {

@@ -22,7 +22,7 @@
                         <a href="{{ route('cars.show', ['car' => $car->id]) }}" class="btn btn-primary">
                             More Details
                         </a>
-
+                        <br><br>
                     </div>
                 </div>
             @endforeach

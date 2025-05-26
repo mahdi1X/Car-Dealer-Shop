@@ -29,6 +29,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
     <!-- Lottie Loader -->
@@ -129,7 +130,8 @@
                             <li class="nav-item mx-3 position-relative">
                                 <form class="search" action="{{ route('cars.index') }}" method="GET">
                                     <input type="text" name="q" class="textbox" placeholder="Search brands...">
-                                    <button type="submit" class="icon d-flex justify-content-center align-items-center text-center">
+                                    <button type="submit"
+                                        class="icon d-flex justify-content-center align-items-center text-center">
                                         <i class="bi bi-search text-white"></i>
                                     </button>
                                 </form>
@@ -154,6 +156,12 @@
                             <i class="bi bi-file-earmark-text-fill me-1"></i> Policies
                         </a>
                     </li>
+                    <form action="{{ route('users.index') }}" method="GET" class="d-flex mx-3" role="search">
+                        <input type="text" name="q" value="{{ old('q', $search ?? '') }}">
+
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
+
 
                     @guest
                         @if (Route::has('login'))
@@ -174,21 +182,36 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
-                                data-bs-toggle="dropdown" style="color: #00bcd4;">
-                                <i style="color: #00bcd4"class="bi bi-person-circle me-1"></i>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center text-white"
+                                href="#" data-bs-toggle="dropdown" style="color: #00bcd4;">
+                                @if (Auth::user()->profile_picture)
+                                    <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
+                                        class="rounded-circle me-2" width="30" height="30" alt="Profile">
+                                @else
+                                    <i class="bi bi-person-circle me-1" style="font-size: 1.4rem; color: #00bcd4;"></i>
+                                @endif
                                 {{ Auth::user()->name }}
                             </a>
+
                             <div class="dropdown-menu dropdown-menu-end">
+                                {{-- Profile link --}}
+                                <a class="dropdown-item" href="{{ route('user.profile', Auth::user()->id) }}">
+                                    {{ __('Profile') }}
+                                </a>
+
+                                {{-- Logout link --}}
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
                         </li>
+
+
                     @endguest
                 </ul>
             </div>
@@ -348,7 +371,7 @@
         window.addEventListener('load', function() {
             const loader = document.getElementById('global-loader');
             if (loader) {
-                loader.style.transition = 'opacity 0s ease';
+                loader.style.transition = 'opacity 2s ease';
                 loader.style.opacity = '0';
                 setTimeout(() => {
                     loader.style.display = 'none';
@@ -412,38 +435,38 @@
         });
     </script>
     <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const searchBtn = document.querySelector(".search-btn");
-    const searchWrapper = document.querySelector(".search-wrapper");
-    const closeBtn = document.querySelector(".close-btn");
-    const searchInput = document.querySelector(".search-input");
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchBtn = document.querySelector(".search-btn");
+            const searchWrapper = document.querySelector(".search-wrapper");
+            const closeBtn = document.querySelector(".close-btn");
+            const searchInput = document.querySelector(".search-input");
 
-    if (searchBtn && searchWrapper && closeBtn) {
-        // Toggle search bar open/close
-        searchBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            searchWrapper.classList.toggle("active");
+            if (searchBtn && searchWrapper && closeBtn) {
+                // Toggle search bar open/close
+                searchBtn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    searchWrapper.classList.toggle("active");
 
-            if (searchWrapper.classList.contains("active")) {
-                searchInput.focus();
+                    if (searchWrapper.classList.contains("active")) {
+                        searchInput.focus();
+                    }
+                });
+
+                // Close search when "X" is clicked
+                closeBtn.addEventListener("click", function() {
+                    searchWrapper.classList.remove("active");
+                });
+
+                // Optional: Close search if clicked outside
+                document.addEventListener("click", function(e) {
+                    const isClickInside = searchWrapper.contains(e.target) || searchBtn.contains(e.target);
+                    if (!isClickInside) {
+                        searchWrapper.classList.remove("active");
+                    }
+                });
             }
         });
-
-        // Close search when "X" is clicked
-        closeBtn.addEventListener("click", function () {
-            searchWrapper.classList.remove("active");
-        });
-
-        // Optional: Close search if clicked outside
-        document.addEventListener("click", function (e) {
-            const isClickInside = searchWrapper.contains(e.target) || searchBtn.contains(e.target);
-            if (!isClickInside) {
-                searchWrapper.classList.remove("active");
-            }
-        });
-    }
-});
-</script>
+    </script>
 
 
 

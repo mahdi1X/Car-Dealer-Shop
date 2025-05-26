@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\PolicyController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RecommendedController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 
 
 Route::get('/', [CommonController::class, 'index']);
@@ -29,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
 
     Route::resource('admin_users', AdminUserController::class)->except(['show']);
+
 
 
     Route::get('/brands/create', [BrandsController::class, 'create'])->name('brands.create');
@@ -58,8 +62,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/reservations/{reservation}/complete', [ReservationController::class, 'completeReservation'])->name('reservations.complete');
     Route::get('/reservations/{reservation}/view', [ReservationController::class, 'view'])->name('reservations.view');
 
-});
 
+
+
+});
+Route::get('/users/{user}/report', [ReportController::class, 'create'])->name('user-reports.create');
+Route::post('/user-reports', [ReportController::class, 'store'])->name('user-reports.store');
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/user/{id}/profile', [UserController::class, 'showProfile'])->name('user.profile');
+Route::put('/user/{id}/profile', [UserController::class, 'updateProfile'])->name('user.update');
 Route::get('/brands/{brand}', action: [BrandsController::class, 'show'])->name('brands.show');
 Route::put('/brands/{id}', [BrandsController::class, 'update'])->name('brands.update');
 Route::get('/brands/{brand}/edit', [BrandsController::class, 'edit'])->name('brands.edit');

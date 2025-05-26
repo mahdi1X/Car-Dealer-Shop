@@ -3,7 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Relations\HasMany; 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,8 +24,12 @@ class User extends Authenticatable
         'password',
         'address',
         'payment_method',
-        'role'
+        'role',
+        'region',
+        'profile_picture',
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -49,19 +53,26 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    
-public function reservations(): HasMany
-{
-    return $this->hasMany(Reservation::class);
-}
-public function likes()
-{
-    return $this->hasMany(Like::class);
-}
 
-public function likedCars()
-{
-    return $this->belongsToMany(Car::class, 'likes')->withPivot('like')->withTimestamps();
-}
-    
+    public function reservations(): HasMany
+    {
+        return $this->hasMany(Reservation::class);
+    }
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function likedCars()
+    {
+        return $this->belongsToMany(Car::class, 'likes')->withPivot('like')->withTimestamps();
+    }
+    // in User.php model
+    public function cars()
+    {
+        return $this->hasMany(Car::class, 'created_by_id');
+    }
+
+
+
 }
