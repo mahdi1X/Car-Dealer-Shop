@@ -144,7 +144,7 @@
                     @else
                         <p class="text-muted text-center">No cars listed yet.</p>
                     @endif
-                    @if (Auth::id() !== $user->id)
+                    @if (Auth::id() !== $user->id && Auth::user()->role == 'customer')
                         <div class="text-center mb-4">
                             <a href="{{ route('user-reports.create', $user->id) }}" class="btn btn-outline-danger">
                                 Report User

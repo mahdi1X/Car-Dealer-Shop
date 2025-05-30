@@ -10,21 +10,29 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $query = User::query();
+        $user = Auth::user();
 
-        $search = $request->input('q'); // assign here once
-
-        if ($search) {
-            $query->where('name', 'like', "%{$search}%")
-                ->orWhere('email', 'like', "%{$search}%");
+        // Admin: show all customers
+        if ($user->role === 'admin') {
+            $users = User::where('role', 'customer')->get();
+        }
+        // Manager: only customers from the same region
+        elseif ($user->role === 'manager') {
+            $users = User::where('role', 'customer')
+                ->where('region', $user->region)
+                ->get();
+        }
+        // Unauthorized for others
+        else {
+            abort(403, 'Unauthorized');
         }
 
-        $users = $query->paginate(10);
-
-        return view('user.index', compact('users', 'search')); // pass $search to view
+        return view('user.index', compact('users'));
     }
+
+
 
 
     // Show user profile

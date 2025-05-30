@@ -13,6 +13,8 @@
                 z-index: -1;
                 /* Keeps it behind all other elements */
                 overflow: hidden;
+                pointer-events: none;
+
             }
 
             .bg-image {
@@ -32,6 +34,8 @@
                 width: 100%;
                 background: rgba(0, 0, 0, 0.4);
                 z-index: 0;
+                pointer-events: none;
+
             }
 
             .container {
@@ -139,8 +143,8 @@
                             <div class="mb-3">
                                 <label for="email">{{ __('Email Address') }}</label>
                                 <input id="email" type="email"
-                                    class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -152,8 +156,8 @@
                             <div class="mb-3">
                                 <label for="password">{{ __('Password') }}</label>
                                 <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror"
-                                    name="password" required autocomplete="current-password">
+                                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                                    autocomplete="current-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

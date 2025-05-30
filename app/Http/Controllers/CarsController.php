@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Brand;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -144,9 +145,9 @@ class CarsController extends Controller
     }
 
 
-    public function show(Car $car)
+    public function show(Car $car, User $user)
     {
-        return view('cars.show', compact('car'));
+        return view('cars.show', compact('car', 'user'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -231,13 +232,14 @@ class CarsController extends Controller
         }
 
         // Documents
-        $documents = [];
+        $existingDocs = $car->documents ?? [];
         if ($request->hasFile('documents')) {
             foreach ($request->file('documents') as $doc) {
                 $documents[] = $doc->store('documents', 'public');
             }
-            $validated['documents'] = $documents;
+            $validated['documents'] = array_merge($existingDocs, $documents);
         }
+
 
         $galleryPaths = [];
         if ($request->hasFile('gallery_images')) {

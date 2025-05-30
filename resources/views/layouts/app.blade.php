@@ -34,6 +34,7 @@
 
     <!-- Lottie Loader -->
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    
 </head>
 
 <body>
@@ -57,12 +58,7 @@
     </div>
 
 
-    <div id="logo-vanta" class="logo-container text-center py-3">
-        <a href="{{ url('/') }}">
-            <img src="{{ asset('storage/common-images/WhatsApp Image 2025-05-01 at 20.15.24_0501f586.jpg') }}"
-                alt="CartMart Logo" class="main-logo">
-        </a>
-    </div>
+
 
 
 
@@ -72,6 +68,14 @@
     <nav id="main-navbar" class="navbar navbar-expand-md custom-navbar">
         <div class="container">
             <!-- Logo -->
+            <div id="logo-vanta" class="logo-container text-center py-3">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('storage/common-images/WhatsApp Image 2025-05-01 at 20.15.24_0501f586.jpg') }}"
+                        alt="CartMart Logo" class="main-logo">
+                </a>
+            </div>
+            <!-- Other nav links -->
+
 
 
             <!-- Toggler -->
@@ -95,7 +99,14 @@
                     @guest
                         {{-- Guest users --}}
                     @else
-                        @if (Auth::user()->role == 'admin')
+                        @if (Auth::user()->role == 'admin' || Auth::user()->role == 'manager')
+                            <li class="nav-item">
+                                <a class="navbar-brand animated-border {{ request()->is('users.index*') ? 'active-link' : '' }}"
+                                    href="{{ route('users.index') }}">
+
+                                    <i class="bi bi-person-lines-fill me-1"></i> Users
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="navbar-brand animated-border {{ request()->is('admin_users*') ? 'active-link' : '' }}"
                                     href="{{ url('admin_users') }}">
@@ -114,6 +125,12 @@
                                     <i class="bi bi-graph-up me-1"></i> Analytics
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="navbar-brand animated-border {{ request()->routeIs('reports.index') ? 'active-link' : '' }}"
+                                    href="{{ route('reports.index') }}">
+                                    <i class="bi bi-exclamation-triangle"></i>User Reports
+                                </a>
+                            </li>
                         @else
                             <li class="nav-item">
                                 <a class="navbar-brand animated-border {{ request()->routeIs('mypage') ? 'active-link' : '' }}"
@@ -127,16 +144,7 @@
                                     <i class="bi bi-heart-fill me-1"></i> My Liked Cars
                                 </a>
                             </li>
-                            <li class="nav-item mx-3 position-relative">
-                                <form class="search" action="{{ route('cars.index') }}" method="GET">
-                                    <input type="text" name="q" class="textbox" placeholder="Search brands...">
-                                    <button type="submit"
-                                        class="icon d-flex justify-content-center align-items-center text-center">
-                                        <i class="bi bi-search text-white"></i>
-                                    </button>
-                                </form>
 
-                            </li>
                             <li class="nav-item">
                                 <a class="navbar-brand animated-border {{ request()->routeIs('reservations.index') ? 'active-link' : '' }}"
                                     href="{{ route('reservations.index') }}">
@@ -156,11 +164,7 @@
                             <i class="bi bi-file-earmark-text-fill me-1"></i> Policies
                         </a>
                     </li>
-                    <form action="{{ route('users.index') }}" method="GET" class="d-flex mx-3" role="search">
-                        <input type="text" name="q" value="{{ old('q', $search ?? '') }}">
 
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                    </form>
 
 
                     @guest
@@ -218,6 +222,19 @@
         </div>
     </nav>
 
+
+    @if (Auth::check() && Auth::user()->role == 'customer')
+        <div class="search-wrapper">
+            <form class="search" action="{{ route('cars.index') }}" method="GET">
+                <input type="text" name="q" class="textbox" placeholder="Search brands...">
+                <button type="submit" class="icon d-flex justify-content-center align-items-center text-center">
+                    <i class="bi bi-search text-white"></i>
+                </button>
+            </form>
+        </div>
+    @endif
+
+
     <!-- Main Content -->
     <main class="py-0" style="margin-top: 80px;">
         @yield('content')
@@ -226,49 +243,58 @@
 
     <!-- Custom Styles -->
     <style>
-        .custom-navbar {
-            background: linear-gradient(135deg, #004d61, #1c1c1c, #007d8c);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            height: 80px;
-            z-index: 1000;
+        /* Navbar Enhancements */
+        /* Add this in your CSS or in a style tag */
+        .navbar-bg {
+            @apply bg-white/70 backdrop-blur-md shadow-md transition-colors duration-300;
         }
 
+        .custom-navbar {
+            background: rgba(118, 118, 118, 0.8);
+            /* stronger, consistent */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 6px 30px rgba(0, 188, 212, 0.3);
+            transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+        }
+
+
         .navbar-brand {
-            color: #f0f8ff;
+            color: #ffffff;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 1rem;
+            padding: 6px 12px;
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
 
         .navbar-brand:hover {
-            color: #ffffff;
+            background: rgba(0, 188, 212, 0.1);
+            color: #00e0ff;
         }
 
         .animated-border {
             position: relative;
-            display: inline-block;
-            color: #f0f8ff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 4px 8px;
         }
 
         .animated-border::before,
         .animated-border::after {
             content: '';
             position: absolute;
-            width: 0;
             height: 2px;
-            background-color: #7de3ec;
-            transition: 0.3s ease;
+            width: 0;
+            background-color: #00e0ff;
+            transition: width 0.3s ease;
         }
 
         .animated-border::before {
-            bottom: 0;
             left: 0;
+            bottom: 0;
         }
 
         .animated-border::after {
-            top: 0;
             right: 0;
+            top: 0;
         }
 
         .animated-border:hover::before,
@@ -277,94 +303,194 @@
         }
 
         .active-link {
-            color: #00bcd4 !important;
-            cursor: default;
+            color: #00e0ff !important;
+            font-weight: 600;
         }
 
         .active-link::before,
         .active-link::after {
-            width: 100% !important;
-            background-color: #00bcd4 !important;
-            transition: none !important;
+            width: 100%;
+            background-color: #00e0ff;
         }
 
         .logo-container {
-            background: linear-gradient(270deg, #004d61, #000000, #00bcd4, #000000);
-            background-size: 1000% 1000%;
-            animation: animatedGradient 15s ease infinite;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1010;
+            padding: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 188, 212, 0.1);
         }
 
         .main-logo {
-            max-height: 70px;
-            border-radius: 14px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.5);
+            max-height: 75px;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(0, 225, 255, 0.4);
         }
 
         .main-logo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 18px rgb(0, 238, 255);
+            transform: scale(1.03);
+            box-shadow: 0 0 25px rgb(0, 255, 255);
         }
 
         .search {
             display: flex;
             align-items: center;
-            padding: 6px;
-            border-radius: 50px;
-            background: transparent;
-            transition: background 0.4s;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .search-wrapper {
+            position: fixed;
+            top: 150px;
+            /* or match your navbar height */
+            right: 45px;
+            z-index: 1000;
+            background-color: transparent;
+            backdrop-filter: none;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+
+        /* Optional: adapt width & style of form inside */
+        .search {
+            display: flex;
+            align-items: center;
+        }
+
+        .search .textbox {
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .search .icon {
+            background-color: #005ec2;
+            border: none;
+            padding: 30px 30px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+
+
+
+        .search:hover {
+            background: rgb(135, 135, 135);
         }
 
         .search .textbox {
             width: 0;
-            padding: 10px 16px;
-            border: none;
-            border-radius: 50px 0 0 50px;
-            outline: none;
+            padding: 10px 0;
             background: transparent;
-            color: white;
-            transition: width 0.4s;
-        }
-
-        .search:hover {
-            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            outline: none;
+            color: #ffffff;
+            transition: width 0.4s ease;
+            font-size: 0.9rem;
         }
 
         .search:hover .textbox {
-            width: 150px;
-            background: transparent;
+            width: 250px;
+            padding: 10px 12px;
         }
 
         .search .icon {
-            background: #006aff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-        }
-
-        .search-toggle-form {
-            display: flex !important;
-            align-items: center;
-            gap: 0.5rem;
-            /* optional spacing between elements */
-        }
-
-        .search-btn {
+            width: 40px;
             height: 40px;
-            padding: 0 12px;
+            border-radius: 50%;
+            background: #00bcd4;
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            line-height: 1;
+            transition: background 0.3s ease;
         }
 
-        /* Prevent content jumping when navbar becomes fixed */
+        .search .icon:hover {
+            background: #00e0ff;
+        }
+
+        /* Dropdown User Profile Enhancements */
+        .dropdown-toggle {
+            font-weight: 500;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover {
+            color: #00e0ff;
+        }
+
+        .dropdown-menu {
+            background: #555555;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dropdown-item {
+            color: #ffffff;
+            transition: background 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #00bcd4;
+            color: #ffffff;
+        }
+
+        /* Navbar Shadow When Fixed */
+        .navbar-fixed-top-shadow {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
     </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar_top');
+            const searchWrapper = document.querySelector('.search-wrapper');
+
+            if (navbar && searchWrapper) {
+                const navHeight = navbar.offsetHeight;
+                searchWrapper.style.top = navHeight + 'px';
+            }
+        });
+    </script>
+
+    <script>
+        const searchBar = document.querySelector('.search-bar-fixed');
+
+        function updateNavbarState() {
+            const scrollY = window.scrollY || window.pageYOffset;
+
+            if (scrollY >= logoHeight) {
+                navbar.classList.add('fixed-top', 'navbar-fixed-top-shadow');
+                searchBar.style.top = navbar.offsetHeight + 'px';
+            } else {
+                navbar.classList.remove('fixed-top', 'navbar-fixed-top-shadow');
+                searchBar.style.top = '80px'; // fallback default
+            }
+        }
+    </script>
+    <script>
+        const navbar = document.getElementById('main-navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                // Scrolled down — slightly stronger blur + background
+                navbar.style.background = 'rgba(146, 138, 138, 0.8)';
+                navbar.style.backdropFilter = 'blur(12px)';
+                navbar.style.webkitBackdropFilter = 'blur(12px)';
+                navbar.style.boxShadow = '0 6px 30px rgba(0, 188, 212, 0.3)';
+            } else {
+                // At the very top — gentle blur + background
+                navbar.style.background = 'rgba(146, 138, 138, 0.6)';
+                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.style.webkitBackdropFilter = 'blur(10px)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 188, 212, 0.2)';
+            }
+        });
+    </script>
 
     <!-- Loader Hide Script -->
     <script>

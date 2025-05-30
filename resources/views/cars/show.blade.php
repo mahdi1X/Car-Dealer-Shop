@@ -114,6 +114,17 @@
             </div>
         @endif
     </div>
+    <div class="flex justify-center mt-6">
+        <a href="{{ route('user.profile', $car->createdBy->id) }}"
+            class="block bg-gradient-to-r from-white to-gray-50 hover:from-indigo-50 hover:to-indigo-100 transition-all shadow-md rounded-xl px-6 py-4 text-center max-w-xs border border-gray-200 hover:border-indigo-400"
+            title="View owner details">
+            <h5 class="text-lg font-semibold text-gray-700">
+                <span class="text-gray-500">Owned By:</span>
+                <span class="text-indigo-600 hover:underline">{{ $car->createdBy->name }}</span>
+            </h5>
+        </a>
+    </div>
+
 
     {{-- Car Info --}}
     <div class="row row-cols-1 row-cols-md-2 g-4">

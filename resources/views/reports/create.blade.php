@@ -1,45 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-xl mx-auto bg-white p-6 rounded shadow mt-8">
-        <h2 class="text-2xl font-semibold mb-4">Report User</h2>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+            <h3 class="text-center text-primary mb-4">Submit a Report</h3>
 
-        {{-- Success message --}}
-        @if (session('success'))
-            <div class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
-                {{ session('success') }}
-            </div>
-        @endif
+            {{-- Success message --}}
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-        {{-- Validation errors --}}
-        @if ($errors->any())
-            <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
-                <ul class="list-disc list-inside">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+            {{-- Validation errors --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-        <form action="{{ route('user-reports.store') }}" method="POST" class="space-y-4">
-            @csrf
+            <form action="{{ route('user-reports.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="reported_user_id" value="{{ $reportedUser->id }}">
 
-            {{-- Hidden input for reported user ID --}}
-            <input type="hidden" name="reported_user_id" value="{{ $reportedUser->id }}">
+                <div class="mb-3">
+                    <label for="reason" class="form-label">Reason</label>
+                    <textarea name="reason" id="reason" rows="4" class="form-control" required
+                        placeholder="Explain your concern...">{{ old('reason') }}</textarea>
+                </div>
 
-            <div>
-                <label for="reason" class="block font-medium text-gray-700 mb-1">Reason</label>
-                <textarea name="reason" id="reason" rows="4"
-                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                    required>{{ old('reason') }}</textarea>
-            </div>
-
-            <div>
-                <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
-                    Submit Report
-                </button>
-            </div>
-        </form>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-danger">Submit Report</button>
+                </div>
+            </form>
+        </div>
     </div>
 @endsection

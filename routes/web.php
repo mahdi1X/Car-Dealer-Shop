@@ -14,6 +14,8 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AdminReportController;
+use App\Http\Controllers\UserBanController;
 
 
 Route::get('/', [CommonController::class, 'index']);
@@ -68,8 +70,18 @@ Route::middleware(['auth'])->group(function () {
 });
 Route::get('/users/{user}/report', [ReportController::class, 'create'])->name('user-reports.create');
 Route::post('/user-reports', [ReportController::class, 'store'])->name('user-reports.store');
+Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+Route::get('/reports/{id}', [ReportController::class, 'show'])->name('reports.show');
+Route::post('/admin-reports/submit/{report}', [AdminReportController::class, 'store'])->name('admin-reports.store');
+Route::get('/admin-reports/{id}', [AdminReportController::class, 'show'])->name('admin-reports.show');
+Route::post('/users/{user}/ban', [UserBanController::class, 'ban'])->name('users.ban');
+Route::post('/users/{user}/unban', [UserBanController::class, 'unban'])->name('users.unban');
+
+
+
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
 Route::get('/user/{id}/profile', [UserController::class, 'showProfile'])->name('user.profile');
 Route::put('/user/{id}/profile', [UserController::class, 'updateProfile'])->name('user.update');
 Route::get('/brands/{brand}', action: [BrandsController::class, 'show'])->name('brands.show');

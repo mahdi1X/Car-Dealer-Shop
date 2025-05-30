@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -27,7 +28,11 @@ class User extends Authenticatable
         'role',
         'region',
         'profile_picture',
+        'is_banned',
+        'ban_reason',
+        'banned_until',
     ];
+
 
 
 
@@ -51,8 +56,24 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'banned_until' => 'datetime', // add this
+            'is_banned' => 'boolean',
         ];
     }
+    public function banDurationText(): string
+    {
+        if (!$this->isCurrentlyBanned()) {
+            return '';
+        }
+
+        if ($this->banned_until) {
+            $daysLeft = now()->diffInDays($this->banned_until);
+            return "Temporary ban: $daysLeft day(s) remaining.";
+        }
+
+        return "Permanent ban.";
+    }
+
 
     public function reservations(): HasMany
     {
@@ -72,6 +93,30 @@ class User extends Authenticatable
     {
         return $this->hasMany(Car::class, 'created_by_id');
     }
+    public function managers(): HasMany
+    {
+        return $this->hasMany(User::class, 'managed_by');
+    }
+
+    // A manager is managed by one admin
+    public function admin(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'managed_by');
+    }
+    public function isCurrentlyBanned()
+    {
+        if ($this->banned_until && now()->lessThan($this->banned_until)) {
+            return true; // Temporarily banned
+        }
+
+        if ($this->is_banned && is_null($this->banned_until)) {
+            return true; // Permanently banned
+        }
+
+        return false;
+    }
+
+
 
 
 

@@ -87,4 +87,8 @@ class Car extends Model
     {
         return $this->belongsToMany(User::class, 'likes')->withPivot('like')->withTimestamps();
     }
+    public function profile(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
