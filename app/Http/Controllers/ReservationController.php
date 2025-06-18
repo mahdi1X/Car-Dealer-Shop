@@ -119,19 +119,24 @@ class ReservationController extends Controller
     public function calendarEvents()
     {
         try {
-            $reservations = Auth::user()
-                ->reservations()
-                ->with(['car.brand'])
+            \Log::info('calendarEvents called by user: ' . Auth::id());
+
+            $userId = Auth::id();
+
+            $reservations = Reservation::with(['car.brand'])
+                ->where(function ($query) use ($userId) {
+                    $query->where('user_id', $userId)
+                          ->orWhereHas('car', function ($q) use ($userId) {
+                              $q->where('created_by_id', $userId);
+                          });
+                })
                 ->whereIn('state', [
                     StatesEnum::PENDING,
                     StatesEnum::COMPLETED,
-                    StatesEnum::CANCELED
                 ])
-                ->whereNotNull('start_date')
-                ->whereNotNull('end_date')
-                ->where('start_date', '!=', '0000-00-00')
-                ->where('end_date', '!=', '0000-00-00')
                 ->get();
+
+            \Log::info('Reservations fetched: ', $reservations->toArray());
 
             $events = $reservations->map(function ($reservation) {
                 if (!$reservation->car || !$reservation->car->brand) {
@@ -140,10 +145,11 @@ class ReservationController extends Controller
 
                 return [
                     'id' => $reservation->id,
-                    'title' => $reservation->car->brand->name . ' - ' . $reservation->car->model,
-                    'start' => Carbon::parse($reservation->start_date)->toDateString(),
-                    'end' => Carbon::parse($reservation->end_date)->addDay()->toDateString(),
-                    'color' => $reservation->state === StatesEnum::COMPLETED ? '#28a745' : '#4b8b91',
+                    'title' => $reservation->car->name . ' - ' . $reservation->car->model,
+                    'start' => \Carbon\Carbon::parse($reservation->reservation_date)->toDateString(),
+                    'end' => \Carbon\Carbon::parse($reservation->reservation_date)->addDay()->toDateString(),
+                    // 'color' => $reservation->state === StatesEnum::COMPLETED ? '#28a745' : '#4b8b91',
+                    'color' => $reservation->user_id === Auth::id() ? '#4b8b91' : '#28a745',
                     'textColor' => '#ffffff',
                     'extendedProps' => [
                         'state' => $reservation->state,
@@ -151,7 +157,9 @@ class ReservationController extends Controller
                 ];
             })->filter()->values();
 
-            return response()->json($events);
+            \Log::info('Events returned: ', $events->toArray());
+
+            return response()->json($events->toArray());
         } catch (\Exception $e) {
             \Log::error('Error fetching calendar events: ' . $e->getMessage());
             return response()->json(['error' => 'Could not load events.'], 500);

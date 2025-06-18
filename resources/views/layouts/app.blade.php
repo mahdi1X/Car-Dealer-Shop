@@ -34,7 +34,7 @@
 
     <!-- Lottie Loader -->
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-    
+
 </head>
 
 <body>
@@ -70,7 +70,7 @@
             <!-- Logo -->
             <div id="logo-vanta" class="logo-container text-center py-3">
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('storage/common-images/WhatsApp Image 2025-05-01 at 20.15.24_0501f586.jpg') }}"
+                    <img src="{{ asset('img\WhatsApp Image 2025-05-01 at 20.15.24_0501f586.jpg') }}"
                         alt="CartMart Logo" class="main-logo">
                 </a>
             </div>
@@ -411,6 +411,10 @@
 
         .search .icon:hover {
             background: #00e0ff;
+        }
+
+        input::placeholder {
+            color:white;
         }
 
         /* Dropdown User Profile Enhancements */

@@ -7,6 +7,8 @@
     <form action="{{ route('admin_users.store') }}" method="POST">
         @csrf
         @include('admin_users.form')
+
+        <input type="hidden" name="role" value="manager">
         <button type="submit" class="btn btn-success">Create</button>
         <a href="{{ route('admin_users.index') }}" class="btn btn-secondary">Cancel</a>
     </form>

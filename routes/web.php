@@ -50,14 +50,13 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware('auth')->post('/like-toggle', [LikeController::class, 'toggle'])->name('like.toggle');
     Route::get('/my-liked-cars', [CarsController::class, 'myLikedCars'])->middleware('auth')->name('cars.liked');
 
-
+    Route::get('/reservations/events', [ReservationController::class, 'calendarEvents'])->name('reservations.events');
     Route::get('/reservations/{car}', [ReservationController::class, 'create'])->name('reservations.create');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
     Route::get('/reservation/{reservation}', [ReservationController::class, 'show'])->name('reservations.show');
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
     Route::post('/reservations/{reservation}/cancel', [ReservationController::class, 'cancelReservation'])->name('reservations.cancel');
     Route::get('/my-reservations/calendar', [ReservationController::class, 'calendar'])->name('reservations.calendar');
-    Route::get('/reservations/events', [ReservationController::class, 'calendarEvents'])->name('reservations.events');
 
 
     // Route::post(uri: '/reservations/{reservation}/complete', [ReservationController::class, 'cancelReservation'])->name('reservations.completed');

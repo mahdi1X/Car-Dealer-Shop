@@ -11,8 +11,8 @@ class AdminUserController extends Controller
     // Add this at the top of the controller
     private function isSuperAdmin()
     {
-        return auth()->check() && auth()->user()->role === 'admin'|| auth()->user()->role == 'manager';
-; // or check another condition
+        return auth()->check() && auth()->user()->role === 'admin' || auth()->user()->role == 'manager';
+        ; // or check another condition
     }
 
     public function index()
@@ -33,6 +33,8 @@ class AdminUserController extends Controller
 
     public function store(Request $request)
     {
+
+
         if (!$this->isSuperAdmin()) {
             abort(403, 'Only the super admin can create users.');
         }
@@ -78,7 +80,7 @@ class AdminUserController extends Controller
             'password' => 'nullable|min:6|confirmed',
             'address' => 'nullable|string',
             'payment_method' => 'nullable|string',
-            'role' => 'required|in:admin,manager',
+            'role' => 'optional|in:admin,manager',
             'region' => 'nullable|string',
             'managed_by' => 'nullable|exists:users,id',
         ]);

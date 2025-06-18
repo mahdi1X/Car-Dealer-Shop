@@ -21,7 +21,7 @@
     <select id="region" name="region" class="form-select {{ $errors->has('region') ? 'is-invalid' : '' }}" required>
         <option value="">{{ __('Select Region') }}</option>
         @foreach (['Beirut', 'Mount Lebanon', 'North Lebanon', 'South Lebanon', 'Nabatieh', 'Bekaa', 'Baalbek-Hermel', 'Akkar'] as $region)
-            <option value="{{ $region }}" {{ old('region') == $region ? 'selected' : '' }}>
+            <option value="{{ $region }}" {{ old('region') == $region || $admin_user->region == $region ? 'selected' : '' }}>
                 {{ $region }}
             </option>
         @endforeach

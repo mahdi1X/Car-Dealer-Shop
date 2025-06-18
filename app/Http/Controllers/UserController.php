@@ -23,7 +23,9 @@ class UserController extends Controller
             $users = User::where('role', 'customer')
                 ->where('region', $user->region)
                 ->get();
+                // dd($user->region);
         }
+        
         // Unauthorized for others
         else {
             abort(403, 'Unauthorized');
