@@ -22,22 +22,72 @@
             $likesCount = $car->likes()->count();
         @endphp
 
-        <form id="likeForm" action="{{ route('like.toggle') }}" method="POST" class="mt-4">
-            @csrf
-            <input type="hidden" name="car_id" value="{{ $car->id }}">
-            <input type="hidden" name="like" value="1">
-            <button type="submit" id="likeButton" class="like-btn {{ $liked ? 'liked' : '' }}"
-                aria-pressed="{{ $liked ? 'true' : 'false' }}" aria-label="Toggle Like">
+        @if (auth()->check())
+            <form id="likeForm" action="{{ route('like.toggle') }}" method="POST" class="mt-4" onsubmit="return false;">
+                @csrf
+                <input type="hidden" name="car_id" value="{{ $car->id }}">
+                <input type="hidden" name="like" value="1">
+                <button type="button" id="likeButton" class="like-btn {{ $liked ? 'liked' : '' }}"
+                    aria-pressed="{{ $liked ? 'true' : 'false' }}" aria-label="Toggle Like" onclick="toggleLike()">
 
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon thumbs-up-icon"
-                    fill="{{ $liked ? '#3b82f6' : '#9ca3af' }}" viewBox="0 0 24 24" stroke="none">
-                    <path
-                        d="M2 20h2v-9H2v9zm19-11h-6.31l.95-4.57.03-.32a.996.996 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1c0-1.1-.9-2-2-2z" />
-                </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon thumbs-up-icon"
+                        fill="{{ $liked ? '#3b82f6' : '#9ca3af' }}" viewBox="0 0 24 24" stroke="none">
+                        <path
+                            d="M2 20h2v-9H2v9zm19-11h-6.31l.95-4.57.03-.32a.996.996 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1c0-1.1-.9-2-2-2z" />
+                    </svg>
 
-                <span id="likesCount" class="likes-count">{{ $likesCount }}</span>
-            </button>
-        </form>
+                    <span id="likesCount" class="likes-count">{{ $likesCount }}</span>
+                </button>
+            </form>
+            <script>
+                function toggleLike() {
+                    const form = document.getElementById('likeForm');
+                    const button = document.getElementById('likeButton');
+                    const likesCountSpan = document.getElementById('likesCount');
+                    const url = form.action;
+                    const token = form.querySelector('input[name="_token"]').value;
+                    const carId = form.querySelector('input[name="car_id"]').value;
+                    const like = form.querySelector('input[name="like"]').value;
+
+                    // Optimistic UI update
+                    const wasLiked = button.classList.contains('liked');
+                    let likesCount = parseInt(likesCountSpan.textContent, 10) || 0;
+                    if (wasLiked) {
+                        button.classList.remove('liked');
+                        button.setAttribute('aria-pressed', 'false');
+                        button.querySelector('svg').setAttribute('fill', '#9ca3af');
+                        likesCountSpan.textContent = Math.max(0, likesCount - 1);
+                    } else {
+                        button.classList.add('liked');
+                        button.setAttribute('aria-pressed', 'true');
+                        button.querySelector('svg').setAttribute('fill', '#3b82f6');
+                        likesCountSpan.textContent = likesCount + 1;
+                    }
+
+                    fetch(url, {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': token,
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                car_id: carId,
+                                like: like
+                            })
+                        })
+                        .then(async response => {})
+                        .catch((err) => {});
+                }
+            </script>
+        @else
+            <div class="mt-4">
+                <a href="{{ route('login') }}" class="btn btn-outline-primary">
+                    Log in to like this car ({{ $likesCount }} likes)
+                </a>
+            </div>
+        @endif
+
 
 
         {{-- Media Sections --}}

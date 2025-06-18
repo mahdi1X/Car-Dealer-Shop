@@ -51,10 +51,11 @@ class AdminDashboardController extends Controller
                     $query->join('reservations', 'cars.id', '=', 'reservations.car_id');
                 }
             ])
+            
                 ->orderByDesc('reservation_count')
                 ->take(5)
                 ->get(['name']);
-
+                                        
             $topUsers = User::withCount('reservations')
                 ->orderByDesc('reservations_count')
                 ->take(5)

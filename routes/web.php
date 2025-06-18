@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/brands/create', [BrandsController::class, 'create'])->name('brands.create');
     Route::post('/brands', [BrandsController::class, 'store'])->name('brands.store');
+    Route::delete('/brands/{id}', [BrandsController::class, 'destroy'])->name('brands.destroy');
     Route::get('/admin/analytics', [AdminDashboardController::class, 'show'])->name('analytics.index');
 
     Route::get('/cars/create', [CarsController::class, 'showCreateForm'])->name('cars.create');

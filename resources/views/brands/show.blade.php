@@ -54,6 +54,13 @@
 
         <div class="mt-4">
             <a href="{{ route('brands.index') }}" class="btn btn-secondary">Back to Brands</a>
+            @if($brand->cars->count() == 0)
+                <form action="{{ route('brands.destroy', $brand->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this brand?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger ms-2">Delete Brand</button>
+                </form>
+            @endif
         </div>
     </div>
 @endsection

@@ -44,7 +44,7 @@ class BrandsController extends Controller
 
         $brand = Brand::create($validatedData);
 
-        return redirect()->route(route: 'brands.create');
+        return redirect()->route('brands.index')->with('msg', 'Brand created successfully.');
     }
 
 
@@ -89,7 +89,7 @@ class BrandsController extends Controller
     
         $brand->update($validatedData);
     
-        return redirect()->route('brands.index')->with('success', 'Brand updated successfully.');
+        return redirect()->route('brands.index')->with('msg', 'Brand updated successfully.');
     }
     
 
@@ -98,6 +98,9 @@ class BrandsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        $brand->delete();
+
+        return redirect()->route('brands.index')->with('msg', 'Brand deleted successfully.');
     }
 }

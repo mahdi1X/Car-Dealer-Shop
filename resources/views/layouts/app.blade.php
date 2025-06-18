@@ -107,12 +107,13 @@
                                     <i class="bi bi-person-lines-fill me-1"></i> Users
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="navbar-brand animated-border {{ request()->is('admin_users*') ? 'active-link' : '' }}"
-                                    href="{{ url('admin_users') }}">
-                                    <i class="bi bi-shield-lock-fill me-1"></i> Admins
-                                </a>
-                            </li>
+                            @if (Auth::user()->role == 'admin')
+                                <li class="nav-item">
+                                    <a class="navbar-brand animated-border {{ request()->is('admin_users*') ? 'active-link' : '' }}"
+                                        href="{{ url('admin_users') }}">
+                                        <i class="bi bi-shield-lock-fill me-1"></i> Managers </a>
+                                </li>
+                            @endif
                             <li class="nav-item">
                                 <a class="navbar-brand animated-border {{ request()->routeIs('brands.index') ? 'active-link' : '' }}"
                                     href="{{ route('brands.index') }}">
@@ -156,6 +157,9 @@
                                 <i class="bi bi-calendar2-week-fill me-1"></i> Calendar View
                             </a>
                         @endif
+                    @endguest
+                    @guest
+
                     @endguest
 
                     <li class="nav-item">
@@ -414,7 +418,7 @@
         }
 
         input::placeholder {
-            color:white;
+            color: white;
         }
 
         /* Dropdown User Profile Enhancements */

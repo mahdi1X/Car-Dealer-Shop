@@ -4,11 +4,11 @@
 
     <div class="container mt-4">
         <br>
-        <h1 class="mb-4 text-center">User Management (Admins & Managers)</h1>
+        <h1 class="mb-4 text-center">Mangers Management</h1>
 
         {{-- Only Admins can create new users --}}
         @if (Auth::user()->role === 'admin')
-            <a href="{{ route('admin_users.create') }}" class="btn btn-primary mb-3">Create New User</a>
+            <a href="{{ route('admin_users.create') }}" class="btn btn-primary mb-3">Add New Managr</a>
         @endif
 
         @if (session('success'))
