@@ -73,7 +73,7 @@ class Car extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function reservation(): HasMany
+    public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class);
     }

@@ -56,6 +56,14 @@
             background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay>
         </dotlottie-player>
     </div>
+    <style>
+        body {
+            /* Fixed, modern gradient background for the whole blade */
+            background: linear-gradient(120deg, #669fe0 0%, #ffffff 50%, #8181815b 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+    </style>
 
 
 
