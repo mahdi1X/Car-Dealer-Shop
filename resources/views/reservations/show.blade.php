@@ -23,12 +23,12 @@
             <p><strong>Email:</strong> {{ $reservation->user->email }}</p>
             <p><strong>Paying by:</strong> {{ $reservation->user->payment_method }}</p>
 
+            @if(auth()->check() && $reservation->car->created_by_id == auth()->id())
             <a href="mailto:{{ $reservation->user->email }}?subject=Regarding your car reservation&body=Hello {{ $reservation->user->name }},%0D%0A%0D%0AI am contacting you regarding your reservation for the car '{{ $reservation->car->name }}' (Reservation ID: {{ $reservation->id }}).My place is in: {{$reservation->user->address}} Please let me know if you have any questions.%0D%0A%0D%0AThank you."
                 class="btn btn-success mt-3">
                  📧 Contact {{ $reservation->user->name }}
              </a>
-             
-
+            @endif
         </div>
     </div>
     <br><br>

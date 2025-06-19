@@ -64,6 +64,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/reservations/{reservation}/complete', [ReservationController::class, 'completeReservation'])->name('reservations.complete');
     Route::get('/reservations/{reservation}/view', [ReservationController::class, 'view'])->name('reservations.view');
 
+    Route::get('/users/most-reported', [UserController::class, 'mostReportedUsers'])->name('users.most_reported');
+
 
 
 

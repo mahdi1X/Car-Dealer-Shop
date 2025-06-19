@@ -176,7 +176,7 @@
             </div>
         </div>
         <div class="container text-center">
-            <p class="mb-0 text-light">&copy; {{ date('Y') }} YourCarSite. All Rights Reserved.</p>
+            <p class="mb-0 text-light">&copy; {{ date('Y') }} Carmart. All Rights Reserved.</p>
         </div>
     </div>
 @endsection

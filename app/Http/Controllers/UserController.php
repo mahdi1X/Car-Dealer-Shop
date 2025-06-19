@@ -10,28 +10,34 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
+        $search = $request->input('search');
 
         // Admin: show all customers
         if ($user->role === 'admin') {
-            $users = User::where('role', 'customer')->get();
+            $users = \App\Models\User::where('role', 'customer')
+                ->when($search, function ($query, $search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
+                ->get();
         }
         // Manager: only customers from the same region
         elseif ($user->role === 'manager') {
-            $users = User::where('role', 'customer')
+            $users = \App\Models\User::where('role', 'customer')
                 ->where('region', $user->region)
+                ->when($search, function ($query, $search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
                 ->get();
-                // dd($user->region);
         }
-        
         // Unauthorized for others
         else {
             abort(403, 'Unauthorized');
         }
 
-        return view('user.index', compact('users'));
+        return view('user.index', compact('users', 'search'));
     }
 
 
@@ -102,6 +108,43 @@ class UserController extends Controller
         ]);
 
         return redirect()->back()->with('status', 'Your report has been submitted.');
+    }
+    public function mostReportedUsers()
+    {
+        $user = Auth::user();
+
+        // Base query: join users and reports, group by reported_user_id
+        $query = \App\Models\Report::query()
+            ->selectRaw('reported_user_id, COUNT(*) as reports_count')
+            ->groupBy('reported_user_id');
+
+        // Manager: only users from the same region
+        if ($user->role === 'manager') {
+            $query->whereHas('reportedUser', function ($q) use ($user) {
+                $q->where('region', $user->region);
+            });
+        } elseif ($user->role !== 'admin') {
+            abort(403, 'Unauthorized');
+        }
+
+        $reportedStats = $query->orderByDesc('reports_count')->get();
+
+        // Get user info for each reported user
+        $userIds = $reportedStats->pluck('reported_user_id');
+        $users = \App\Models\User::whereIn('id', $userIds)->get()->keyBy('id');
+
+        // Combine stats and user info
+        $mostReported = $reportedStats->map(function ($stat) use ($users) {
+            $user = $users[$stat->reported_user_id] ?? null;
+            return [
+                'user' => $user,
+                'reports_count' => $stat->reports_count,
+            ];
+        })->filter(function ($item) {
+            return $item['user'] !== null;
+        });
+
+        return view('user.most_reported', compact('mostReported'));
     }
 
 }

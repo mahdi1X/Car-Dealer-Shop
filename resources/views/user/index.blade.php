@@ -4,6 +4,22 @@
     <div class="container mt-5">
         <h2 class="mb-4">Users Management</h2>
 
+        <!-- Search Bar -->
+        <form method="GET" action="{{ route('users.index') }}" class="mb-4">
+            <div class="input-group" style="max-width: 400px;">
+                <input type="text" name="search" class="form-control" placeholder="Search by name"
+                    value="{{ $search ?? '' }}">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </form>
+
+        <!-- Most Reported Users Button -->
+        <div class="mb-3">
+            <a href="{{ route('users.most_reported') }}" class="btn btn-danger">
+                Most Reported Users
+            </a>
+        </div>
+
         <!-- Toggle Buttons -->
         <div class="mb-3">
             <button class="btn btn-primary" onclick="showTable('all-users')">All Users</button>
