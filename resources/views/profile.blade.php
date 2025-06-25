@@ -29,7 +29,7 @@
                     @endif
                 </div>
 
-                @if (Auth::id() === $user->id)
+                @if (Auth::id() === $user->id && Auth::user()->role !== 'manager')
                     <!-- Editable Profile Form -->
                     <div class="card border-0 shadow mb-5">
                         <div class="card-header bg-primary text-white text-center">
@@ -125,6 +125,7 @@
                 @endif
 
                 <!-- Listed Cars -->
+                @if (Auth::user()->role !== 'admin' && Auth::user()->role !== 'manager')
                 <div class="mt-5">
                     <h4 class="text-primary mb-3">Listed Cars</h4>
                     @if ($cars->count())
@@ -150,20 +151,12 @@
                                 Report User
                             </a>
                         </div>
-
-
-
-
                         <!-- Report Modal -->
-
-
-
+                    @endif
                 </div>
+                @endif
             </div>
-            @endif
-
         </div>
-    </div>
     </div>
     </div>
 @endsection

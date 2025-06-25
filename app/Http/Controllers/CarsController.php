@@ -20,17 +20,56 @@ class CarsController extends Controller
 
         $cars = Car::query();
 
+        // Filter by name or brand name (main search bar)
         if ($query) {
-            $cars->where('name', 'like', "%{$query}%")
-                ->orWhereHas('brand', function ($q2) use ($query) {
-                    $q2->where('name', 'like', "%{$query}%");
-                });
+            $cars->where(function($q) use ($query) {
+                $q->where('name', 'like', "%{$query}%")
+                  ->orWhereHas('brand', function ($q2) use ($query) {
+                      $q2->where('name', 'like', "%{$query}%");
+                  });
+            });
+        }
+
+        // Filter by color (partial match)
+        if ($request->filled('color')) {
+            $cars->where('color', 'like', '%' . $request->color . '%');
+        }
+
+        // Filter by exact year
+        if ($request->filled('year')) {
+            $cars->where('year', $request->year);
+        }
+
+        // Filter by max price
+        if ($request->filled('price')) {
+            $cars->where('price', '<=', $request->price);
+        }
+
+        // Filter by engine type (partial match)
+        if ($request->filled('engine_type')) {
+            $cars->where('engine_type', 'like', '%' . $request->engine_type . '%');
+        }
+
+        // Filter by exact engine size
+        if ($request->filled('engine_size')) {
+            $cars->where('engine_size', $request->engine_size);
+        }
+
+        // Filter by minimum horsepower
+        if ($request->filled('horsepower')) {
+            $cars->where('horsepower', '>=', $request->horsepower);
+        }
+
+        // Filter by exact seat count
+        if ($request->filled('seats')) {
+            $cars->where('seats', $request->seats);
         }
 
         $cars = $cars->get();
 
         return view('cars.index', compact('cars', 'query'));
     }
+
 
     /**
      * Show the form for creating a new resource.

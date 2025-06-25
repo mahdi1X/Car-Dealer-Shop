@@ -16,6 +16,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AdminReportController;
 use App\Http\Controllers\UserBanController;
+use App\Http\Controllers\RecommendationController;
+
 
 
 Route::get('/', [CommonController::class, 'index']);
@@ -58,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
     Route::post('/reservations/{reservation}/cancel', [ReservationController::class, 'cancelReservation'])->name('reservations.cancel');
     Route::get('/my-reservations/calendar', [ReservationController::class, 'calendar'])->name('reservations.calendar');
+    Route::get('/recommended', [RecommendationController::class, 'recommended'])->name('cars.recommended');
+
 
 
     // Route::post(uri: '/reservations/{reservation}/complete', [ReservationController::class, 'cancelReservation'])->name('reservations.completed');

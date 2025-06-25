@@ -236,14 +236,63 @@
 
 
     @if (Auth::check() && Auth::user()->role == 'customer')
-        <div class="search-wrapper">
-            <form class="search" action="{{ route('cars.index') }}" method="GET">
-                <input type="text" name="q" class="textbox" placeholder="Search brands...">
-                <button type="submit" class="icon d-flex justify-content-center align-items-center text-center">
-                    <i class="bi bi-search text-white"></i>
-                </button>
+        <div class="search-wrapper mb-4">
+            <form class="search" action="{{ route('cars.index') }}" method="GET" style="width: 100%;">
+                <div class="d-flex flex-wrap gap-2 align-items-center w-100">
+                    <input type="text" name="q" class="textbox flex-grow-1 search-anim" placeholder="Search" value="{{ request('q') }}" style="min-width: 180px;">
+                    <button type="button" class="btn btn-outline-secondary filter-btn" data-bs-toggle="collapse" data-bs-target="#filterOptions" style="display:none;">
+                        <i class="bi bi-sliders"></i> Filters
+                    </button>
+                    <button type="submit" class="icon d-flex justify-content-center align-items-center text-center">
+                        <i class="bi bi-search text-white"></i>
+                    </button>
+                </div>
+                <div id="filterOptions" class="collapse mt-3 w-100">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <input type="text" name="color" class="form-control" placeholder="Color" value="{{ request('color') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" name="year" class="form-control" placeholder="Year" value="{{ request('year') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" name="price" class="form-control" placeholder="Max Price" value="{{ request('price') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" name="engine_type" class="form-control" placeholder="Engine Type" value="{{ request('engine_type') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" step="0.1" name="engine_size" class="form-control" placeholder="Engine Size (L)" value="{{ request('engine_size') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" name="horsepower" class="form-control" placeholder="Min Horsepower" value="{{ request('horsepower') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" name="seats" class="form-control" placeholder="Seats" value="{{ request('seats') }}">
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
+        <style>
+            .search .search-anim::placeholder {
+                color: transparent;
+                transition: color 0.3s;
+            }
+            .search:hover .search-anim::placeholder {
+                color: #fff;
+            }
+            .search .filter-btn {
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+            .search:hover .filter-btn {
+                display: inline-block !important;
+                opacity: 1;
+                pointer-events: auto;
+            }
+        </style>
     @endif
 
 
