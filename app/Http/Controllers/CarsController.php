@@ -8,6 +8,13 @@ use App\Models\Brand;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Recombee\RecommApi\Client;
+use Recombee\RecommApi\Requests\{
+    AddItem,
+    SetItemValues,
+    AddItemProperty
+};
+use App\Enums\StatesEnum;
 
 class CarsController extends Controller
 {
@@ -22,11 +29,11 @@ class CarsController extends Controller
 
         // Filter by name or brand name (main search bar)
         if ($query) {
-            $cars->where(function($q) use ($query) {
+            $cars->where(function ($q) use ($query) {
                 $q->where('name', 'like', "%{$query}%")
-                  ->orWhereHas('brand', function ($q2) use ($query) {
-                      $q2->where('name', 'like', "%{$query}%");
-                  });
+                    ->orWhereHas('brand', function ($q2) use ($query) {
+                        $q2->where('name', 'like', "%{$query}%");
+                    });
             });
         }
 
@@ -85,6 +92,7 @@ class CarsController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request->all());
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'color' => 'required|string|max:255',
@@ -135,6 +143,8 @@ class CarsController extends Controller
             'image' => 'required|file|mimes:jpg,jpeg,png|max:2048',
         ]);
 
+        // dd($request->all());
+
         // Handle main image
         $validatedData['image'] = $request->file('image')->store('cars', 'public');
 
@@ -178,7 +188,35 @@ class CarsController extends Controller
 
         $validatedData['created_by_id'] = Auth::id();
 
-        Car::create($validatedData);
+        $car = Car::create($validatedData);
+        // dd($car);
+        try {
+            $client = new Client(env('RECOMBEE_DATABASE'), env('RECOMBEE_SECRET_TOKEN'), [
+                'region' => 'eu-west',
+                'timeout' => 10000
+            ]);
+
+            // $client->send(new AddItemProperty('color', 'string'));
+            // $client->send(new AddItemProperty('engine_type', 'string'));
+            // $client->send(new AddItemProperty('engine_size', 'string'));
+            // $client->send(new AddItemProperty('seats', 'int'));
+            // $client->send(new AddItemProperty('horsepower', 'int'));
+            // $client->send(new AddItemProperty('price', 'float'));
+
+            // Add each car (run this once or in a seeder)
+            $client->send(new AddItem($car->id));
+            $client->send(new SetItemValues($car->id, [
+                'color' => $car->color,
+                'engine_type' => $car->engine_type,
+                'engine_size' => $car->engine_size,
+                'seats' => $car->seats,
+                'horsepower' => $car->horsepower,
+                'price' => $car->price
+            ], ['cascadeCreate' => true]));
+        } catch (\Exception $e) {
+            // Handle any exceptions from Recombee
+            // Log the error or handle it as needed
+        }
 
         return redirect()->route('mypage')->with('success', 'Car created successfully.');
     }
@@ -186,7 +224,9 @@ class CarsController extends Controller
 
     public function show(Car $car, User $user)
     {
-        return view('cars.show', compact('car', 'user'));
+        // add flag is_reserver if car->reservations() does not include a pending reservation:
+        $isReserved = $car->reservations()->where('state', StatesEnum::PENDING)->exists();
+        return view('cars.show', compact('car', 'user', 'isReserved'));
     }
     /**
      * Show the form for editing the specified resource.

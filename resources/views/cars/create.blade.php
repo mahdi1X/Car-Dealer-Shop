@@ -112,6 +112,7 @@
                             @enderror
                         </td>
                     </tr>
+                    
                 </tbody>
             </table>
 
@@ -402,6 +403,70 @@
                     </tr>
                 </tbody>
             </table>
+
+            {{-- HISTORY & CONDITION TABLE --}}
+            <table class="table mb-4" style="border: 2px solid #ffffff; border-radius: 5px;">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="bg-primary text-white">History & Condition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label for="condition" class="form-label">Condition</label></td>
+                        <td>
+                            <input type="text" name="condition" id="condition" class="form-control"
+                                value="{{ old('condition', $car->condition ?? '') }}">
+                            @error('condition')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="service_history" class="form-label">Service History</label></td>
+                        <td>
+                            <input type="text" name="service_history" id="service_history" class="form-control"
+                                value="{{ old('service_history', $car->service_history ?? '') }}">
+                            @error('service_history')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="accident_history" class="form-label">Accident History</label></td>
+                        <td>
+                            <input type="text" name="accident_history" id="accident_history" class="form-control"
+                                value="{{ old('accident_history', $car->accident_history ?? '') }}">
+                            @error('accident_history')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="ownership_count" class="form-label">Ownership Count</label></td>
+                        <td>
+                            <input type="number" name="ownership_count" id="ownership_count" class="form-control"
+                                value="{{ old('ownership_count', $car->ownership_count ?? '') }}">
+                            @error('ownership_count')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="registration_valid_till" class="form-label">Registration Valid Till</label></td>
+                        <td>
+                            <input type="date" name="registration_valid_till" id="registration_valid_till" class="form-control"
+                                value="{{ old('registration_valid_till', $car->registration_valid_till ?? '') }}">
+                            @error('registration_valid_till')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            {{-- LOCATION & LOGISTICS TABLE --}}
+            
 
             <button type="submit" class="btn btn-primary">
                 {{ isset($car->id) ? 'Update' : 'Create' }}

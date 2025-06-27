@@ -229,9 +229,31 @@
     </div>
     {{-- Reserve Button (if not car owner) --}}
     @if (Auth::check() && $car->created_by_id != Auth::id())
+        {{-- disable link if !$isReserved --}}
+        <button class="fixed-button btn btn-primary" @if ($isReserved) disabled @endif
+            @if ($isReserved) style="cursor: not-allowed;" @endif   
+            onclick="window.location.href='{{ route('reservations.create', ['car' => $car->id]) }}'">
+            @if ($isReserved)
+                Already Reserved
+            @else
+                Reserve Now
+            @endif
+        </button>
+        {{-- @php
+            $isReserved = $car->reservations()->where('user_id', Auth::id())->exists();
+        @endphp --}}
+        {{-- <a href="{{ route('reservations.create', ['car' => $car->id]) }}"
+            class="fixed-button btn btn-primary {{ $isReserved ? 'disabled' : '' }}">
+            @if ($isReserved)
+                Already Reserved
+            @else
+                Reserve Now
+            @endif
+        </a> --}}
+        {{-- 
         <a href="{{ route('reservations.create', ['car' => $car->id]) }}" class="fixed-button btn btn-primary">
             Reserve Now
-        </a>
+        </a> --}}
     @endif
     <style>
         .like-btn {

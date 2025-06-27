@@ -9,7 +9,10 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
-
+use Recombee\RecommApi\Client;
+use Recombee\RecommApi\Requests\{
+    AddPurchase
+};
 class ReservationController extends Controller
 {
 
@@ -63,6 +66,20 @@ class ReservationController extends Controller
 
         Reservation::create($validatedData);
 
+        $client = new Client(env('RECOMBEE_DATABASE'), env('RECOMBEE_SECRET_TOKEN'), [
+            'region' => 'eu-west',
+            'timeout' => 10000
+        ]);
+
+        try {
+            // Make sure user exists
+            $client->send(new AddPurchase(
+                $validatedData['user_id'],
+                $validatedData['car_id'],
+            ));
+
+        } catch (\Exception $e) {
+        }
         return Redirect::back()->with('msg', 'Reserved Successfully');
     }
 
@@ -126,9 +143,9 @@ class ReservationController extends Controller
             $reservations = Reservation::with(['car.brand'])
                 ->where(function ($query) use ($userId) {
                     $query->where('user_id', $userId)
-                          ->orWhereHas('car', function ($q) use ($userId) {
-                              $q->where('created_by_id', $userId);
-                          });
+                        ->orWhereHas('car', function ($q) use ($userId) {
+                            $q->where('created_by_id', $userId);
+                        });
                 })
                 ->whereIn('state', [
                     StatesEnum::PENDING,

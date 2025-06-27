@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
+// use Recombee\ApiClient\ApiClient;
+// use Recombee\ApiClient\Requests\{
+//     AddItem,
+//     SetItemValues,
+//     RecommendItemsToUser,
+//     AddUser,
+//     AddPurchase
+// };
+use Recombee\RecommApi\Client;
+use Recombee\RecommApi\Requests\AddUser;
 
 class RegisterController extends Controller
 {
@@ -95,7 +105,7 @@ class RegisterController extends Controller
             $profilePath = request()->file('profile_picture')->store('profile_pictures', 'public');
         }
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -106,6 +116,15 @@ class RegisterController extends Controller
             'profile_picture' => $profilePath,
         ]);
 
+        $client = new Client(env('RECOMBEE_DATABASE'), env('RECOMBEE_SECRET_TOKEN'), [
+            'region' => 'eu-west',
+            'timeout' => 10000
+        ]);
+
+        // Make sure user exists
+        $client->send(new AddUser($user->id));
+
+        return $user;
     }
     public function show($id)
     {

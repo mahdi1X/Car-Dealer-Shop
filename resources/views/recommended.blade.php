@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-center mb-4">
             <a href="{{ route('cars.recommended') }}"
                 class="btn {{ request()->routeIs('cars.recommended') ? 'btn-primary' : 'btn-outline-primary' }} me-2">
-                For You
+                AI Recommended
             </a>
             <a href="{{ route('recommended.cars') }}"
                 class="btn {{ request()->routeIs('recommended.cars') ? 'btn-primary' : 'btn-outline-primary' }}">
@@ -18,7 +18,7 @@
 
         {{-- Dynamic Header --}}
         <h1 style="color: black" class="mb-4 text-center">
-            {{ request()->routeIs('cars.recommended') ? 'Recommended Cars for You:' : 'Most Liked Cars:' }}
+            {{ request()->routeIs('cars.recommended') ? 'Recommended Cars By AI:' : 'Most Liked Cars:' }}
         </h1>
         <br><br>
 

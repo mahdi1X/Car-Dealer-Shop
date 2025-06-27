@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ 'CartMart' }}</title>
+    <title>{{ 'CarMart' }}</title>
 
     <!-- Fonts & Icons -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -121,13 +121,14 @@
                                         href="{{ url('admin_users') }}">
                                         <i class="bi bi-shield-lock-fill me-1"></i> Managers </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="navbar-brand animated-border {{ request()->routeIs('brands.index') ? 'active-link' : '' }}"
+                                        href="{{ route('brands.index') }}">
+                                        <i class="bi bi-tags-fill me-1"></i> Brands
+                                    </a>
+                                </li>
                             @endif
-                            <li class="nav-item">
-                                <a class="navbar-brand animated-border {{ request()->routeIs('brands.index') ? 'active-link' : '' }}"
-                                    href="{{ route('brands.index') }}">
-                                    <i class="bi bi-tags-fill me-1"></i> Brands
-                                </a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="navbar-brand animated-border {{ request()->routeIs('analytics.index') ? 'active-link' : '' }}"
                                     href="{{ route('analytics.index') }}">
@@ -237,57 +238,178 @@
 
     @if (Auth::check() && Auth::user()->role == 'customer')
         <div class="search-wrapper mb-4">
-            <form class="search" action="{{ route('cars.index') }}" method="GET" style="width: 100%;">
+            <form class="search modern-search" action="{{ route('cars.index') }}" method="GET"
+                style="width: 100%;">
                 <div class="d-flex flex-wrap gap-2 align-items-center w-100">
-                    <input type="text" name="q" class="textbox flex-grow-1 search-anim" placeholder="Search" value="{{ request('q') }}" style="min-width: 180px;">
-                    <button type="button" class="btn btn-outline-secondary filter-btn" data-bs-toggle="collapse" data-bs-target="#filterOptions" style="display:none;">
+                    <input type="text" name="q" class="textbox flex-grow-1 search-anim"
+                        placeholder="Search cars or brands..." value="{{ request('q') }}"
+                        style="min-width: 180px;">
+                    <button type="button" class="btn btn-outline-secondary filter-btn" data-bs-toggle="collapse"
+                        data-bs-target="#filterOptions" aria-expanded="false" aria-controls="filterOptions">
                         <i class="bi bi-sliders"></i> Filters
                     </button>
                     <button type="submit" class="icon d-flex justify-content-center align-items-center text-center">
                         <i class="bi bi-search text-white"></i>
                     </button>
                 </div>
-                <div id="filterOptions" class="collapse mt-3 w-100">
+                <div id="filterOptions" class="collapse mt-3 w-100 modern-filter-panel">
                     <div class="row g-3">
                         <div class="col-md-3">
-                            <input type="text" name="color" class="form-control" placeholder="Color" value="{{ request('color') }}">
+                            <input type="text" name="color" class="form-control" placeholder="Color"
+                                value="{{ request('color') }}">
                         </div>
                         <div class="col-md-3">
-                            <input type="number" name="year" class="form-control" placeholder="Year" value="{{ request('year') }}">
+                            <input type="number" name="year" class="form-control" placeholder="Year"
+                                value="{{ request('year') }}">
                         </div>
                         <div class="col-md-3">
-                            <input type="number" name="price" class="form-control" placeholder="Max Price" value="{{ request('price') }}">
+                            <input type="number" name="price" class="form-control" placeholder="Max Price"
+                                value="{{ request('price') }}">
                         </div>
                         <div class="col-md-3">
-                            <input type="text" name="engine_type" class="form-control" placeholder="Engine Type" value="{{ request('engine_type') }}">
+                            <input type="text" name="engine_type" class="form-control" placeholder="Engine Type"
+                                value="{{ request('engine_type') }}">
                         </div>
                         <div class="col-md-3">
-                            <input type="number" step="0.1" name="engine_size" class="form-control" placeholder="Engine Size (L)" value="{{ request('engine_size') }}">
+                            <input type="number" step="0.1" name="engine_size" class="form-control"
+                                placeholder="Engine Size (L)" value="{{ request('engine_size') }}">
                         </div>
                         <div class="col-md-3">
-                            <input type="number" name="horsepower" class="form-control" placeholder="Min Horsepower" value="{{ request('horsepower') }}">
+                            <input type="number" name="horsepower" class="form-control"
+                                placeholder="Min Horsepower" value="{{ request('horsepower') }}">
                         </div>
                         <div class="col-md-3">
-                            <input type="number" name="seats" class="form-control" placeholder="Seats" value="{{ request('seats') }}">
+                            <input type="number" name="seats" class="form-control" placeholder="Seats"
+                                value="{{ request('seats') }}">
+                        </div>
+                        <div class="col-md-12 text-end">
+                            <button type="submit" class="btn btn-primary px-4">Apply Filters</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
         <style>
-            .search .search-anim::placeholder {
-                color: transparent;
-                transition: color 0.3s;
+            .modern-search {
+                background: rgba(255, 255, 255, 0.18);
+                border-radius: 32px;
+                box-shadow: 0 4px 24px rgba(75, 139, 145, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+                padding: 8px 16px;
+                transition: box-shadow 0.3s, background 0.3s;
+                border: 1.5px solid #e0e7ef;
             }
-            .search:hover .search-anim::placeholder {
+
+            .modern-search:hover {
+                background: rgba(75, 139, 145, 0.08);
+                box-shadow: 0 8px 32px rgba(75, 139, 145, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08);
+            }
+
+            .modern-search .textbox {
+                background: transparent;
+                border: none;
+                color: #222;
+                font-size: 1.1rem;
+                padding: 10px 0;
+                transition: background 0.2s;
+            }
+
+            .modern-search .textbox:focus {
+                outline: none;
+                background: rgba(0, 188, 212, 0.07);
+                border-radius: 8px;
+            }
+
+            .modern-search .filter-btn {
+                border-radius: 8px;
+                border: 1px solid #e0e7ef;
+                background: #f8fafc;
+                color: #4b8b91;
+                font-weight: 500;
+                transition: background 0.2s, color 0.2s;
+            }
+
+            .modern-search .filter-btn:hover,
+            .modern-search .filter-btn:focus {
+                background: #e0f7fa;
+                color: #2196F3;
+            }
+
+            .modern-search .icon {
+                background: #4b8b91;
                 color: #fff;
+                border: none;
+                border-radius: 50%;
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.3rem;
+                transition: background 0.2s;
             }
-            .search .filter-btn {
+
+            .modern-search .icon:hover {
+                background: #2196F3;
+            }
+
+            .modern-filter-panel {
+                background: rgba(255, 255, 255, 0.95);
+                border-radius: 18px;
+                box-shadow: 0 4px 24px rgba(75, 139, 145, 0.10), 0 2px 8px rgba(0, 0, 0, 0.04);
+                padding: 24px 18px 12px 18px;
+                margin-top: 10px;
+                border: 1.5px solid #e0e7ef;
+                animation: fadeInFilter 0.3s;
+            }
+
+            @keyframes fadeInFilter {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .modern-filter-panel input.form-control {
+                border-radius: 8px;
+                border: 1.5px solid #e0e7ef;
+                background: #f8fafc;
+                color: #222;
+                font-size: 1rem;
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }
+
+            .modern-filter-panel input.form-control:focus {
+                border-color: #4b8b91;
+                box-shadow: 0 0 0 2px #e0f7fa;
+                background: #fff;
+            }
+
+            .modern-filter-panel .btn-primary {
+                border-radius: 8px;
+                font-weight: 600;
+                background: #4b8b91;
+                border: none;
+                transition: background 0.2s;
+            }
+
+            .modern-filter-panel .btn-primary:hover {
+                background: #2196F3;
+            }
+
+            /* Keep filter button hidden until hover */
+            .modern-search .filter-btn {
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.3s;
             }
-            .search:hover .filter-btn {
+
+            .modern-search:hover .filter-btn,
+            .modern-search:focus-within .filter-btn {
                 display: inline-block !important;
                 opacity: 1;
                 pointer-events: auto;
