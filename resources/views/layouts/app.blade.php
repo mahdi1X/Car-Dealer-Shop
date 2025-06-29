@@ -75,12 +75,18 @@
     <!-- Navbar -->
     <nav id="main-navbar" class="navbar navbar-expand-md custom-navbar">
         <div class="container">
-            <!-- Logo -->
+            <!-- Logo or Animated Text -->
             <div id="logo-vanta" class="logo-container text-center py-3">
-                <a href="{{ url('/') }}">
-                    <img src="{{ asset('img\WhatsApp Image 2025-05-01 at 20.15.24_0501f586.jpg') }}"
-                        alt="CartMart Logo" class="main-logo">
-                </a>
+                @if(Auth::check() && Auth::user()->role === 'admin')
+                    <span class="admin-logo-text" id="admin-welcome-text" style="display: block;">Welcome, Admin!</span>
+                @elseif(Auth::check() && Auth::user()->role === 'manager')
+                    <span class="manager-logo-text" id="manager-welcome-text" style="display: block;">Welcome, Manager of {{ Auth::user()->region }}!</span>
+                @else
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('img\WhatsApp Image 2025-05-01 at 20.15.24_0501f586.jpg') }}"
+                            alt="CartMart Logo" class="main-logo">
+                    </a>
+                @endif
             </div>
             <!-- Other nav links -->
 
@@ -631,6 +637,30 @@
         .navbar-fixed-top-shadow {
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
+
+        .admin-animated-logo, .manager-animated-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 75px;
+            min-width: 220px;
+        }
+        .admin-logo-text, .manager-logo-text {
+            font-family: 'Barlow', 'Ubuntu', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+            display: block;
+            margin: 0 auto;
+        }
+        /* Remove any animation styles */
+        .admin-text, .manager-text {
+            animation: none !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: initial !important;
+        }
     </style>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -684,7 +714,7 @@
         window.addEventListener('load', function() {
             const loader = document.getElementById('global-loader');
             if (loader) {
-                loader.style.transition = 'opacity 2s ease';
+                loader.style.transition = 'opacity 0s ease';
                 loader.style.opacity = '0';
                 setTimeout(() => {
                     loader.style.display = 'none';
@@ -778,6 +808,21 @@
                     }
                 });
             }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (Auth::check() && (Auth::user()->role === 'admin' || Auth::user()->role === 'manager'))
+                // Redirect admin/manager to /users after login or page load
+                if (
+                    window.location.pathname === '/home' ||
+                    window.location.pathname === '/' ||
+                    window.location.pathname === '/home/' ||
+                    window.location.pathname === ''
+                ) {
+                    window.location.replace("{{ route('users.index') }}");
+                }
+            @endif
         });
     </script>
 

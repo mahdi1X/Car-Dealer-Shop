@@ -1,23 +1,26 @@
 @extends('layouts.app')
 
-@section('content')
+@section('content') 
+    <br><br><br>
     <div class="container mt-4">
-        <br><br>
-        <h2 class="mb-4 text-center fancy-title">My Reservation Calendar</h2>
-
-        <div id="calendar-loading" class="text-center py-4">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
+        <div class="card shadow-lg border-0 modern-form-card" style="border-radius: 22px; max-width: 1100px; margin: 0 auto;">
+            <div class="card-header bg-primary text-white text-center" style="border-radius: 22px 22px 0 0;">
+                <h2 class="mb-0 fancy-title">My Reservation Calendar</h2>
+            </div>
+            <div class="card-body">
+                <div id="calendar-loading" class="text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div id="reservation-calendar" style="display: block;"></div>
             </div>
         </div>
-
-        <div id="reservation-calendar" style="display: block;"></div>
     </div>
 
     <!-- FullCalendar CSS & JS -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
-    <!-- Add Bootstrap JS for tooltip support -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
@@ -84,6 +87,23 @@
     </script>
 
     <style>
+        .modern-form-card {
+            background: linear-gradient(120deg, #f8fafc 80%, #e0f7fa 100%);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(75,139,145,0.10), 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 32px;
+            width: 100%;
+            transition: none;
+        }
+
+        .modern-form-card .card-header {
+            font-weight: 600;
+            font-size: 1.2rem;
+            background: linear-gradient(90deg, #4b8b91 60%, #2196F3 100%) !important;
+            color: #fff !important;
+            border: none;
+        }
+
         #reservation-calendar {
             background: white;
             padding: 20px;
@@ -115,6 +135,10 @@
             .fc-header-toolbar {
                 flex-direction: column;
                 gap: 10px;
+            }
+
+            .modern-form-card {
+                padding: 0.5rem;
             }
         }
     </style>

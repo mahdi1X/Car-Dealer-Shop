@@ -31,8 +31,8 @@
 
                 @if (Auth::id() === $user->id && Auth::user()->role !== 'manager')
                     <!-- Editable Profile Form -->
-                    <div class="card border-0 shadow mb-5">
-                        <div class="card-header bg-primary text-white text-center">
+                    <div class="card border-0 shadow mb-5 modern-form-card" style="border-radius: 18px; max-width: 650px; margin: 0 auto;">
+                        <div class="card-header bg-primary text-white text-center" style="border-radius: 18px 18px 0 0;">
                             <h4>Edit Profile</h4>
                         </div>
                         <div class="card-body bg-white">
@@ -112,6 +112,29 @@
                             </form>
                         </div>
                     </div>
+                    <style>
+                        .modern-form-card {
+                            background: linear-gradient(120deg, #f8fafc 80%, #e0f7fa 100%);
+                            border-radius: 18px;
+                            box-shadow: 0 8px 32px rgba(75,139,145,0.10), 0 2px 8px rgba(0,0,0,0.04);
+                            margin-bottom: 32px;
+                            max-width: 650px;
+                            width: 100%;
+                            /* Remove hover animation */
+                            transition: none;
+                        }
+                        .modern-form-card:hover {
+                            box-shadow: 0 8px 32px rgba(75,139,145,0.10), 0 2px 8px rgba(0,0,0,0.04);
+                            transform: none;
+                        }
+                        .modern-form-card .card-header {
+                            font-weight: 600;
+                            font-size: 1.1rem;
+                            background: linear-gradient(90deg, #4b8b91 60%, #2196F3 100%) !important;
+                            color: #fff !important;
+                            border: none;
+                        }
+                    </style>
                 @else
                     <!-- View-Only Mode -->
                     <div class="card shadow mb-5 p-4 bg-white text-center">

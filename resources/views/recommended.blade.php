@@ -15,12 +15,12 @@
                 Most Liked
             </a>
         </div>
-
+        <br>
         {{-- Dynamic Header --}}
         <h1 style="color: black" class="mb-4 text-center">
             {{ request()->routeIs('cars.recommended') ? 'Recommended Cars By AI:' : 'Most Liked Cars:' }}
         </h1>
-        <br><br>
+        <br><br><br><br>
 
         {{-- Car Cards --}}
         <div class="row gx-4 gy-4 d-flex flex-wrap">
