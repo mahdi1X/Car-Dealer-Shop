@@ -8,13 +8,18 @@ use App\Models\Car;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Recombee\RecommApi\Client;
 use Recombee\RecommApi\Requests\{
-    AddPurchase
+    AddPurchase,
+    AddUser,
+    AddItem
+
 };
 class ReservationController extends Controller
 {
+
 
     public function __construct()
     {
@@ -64,7 +69,7 @@ class ReservationController extends Controller
 
         $validatedData['user_id'] = Auth::id();
 
-        Reservation::create($validatedData);
+        $reservation = Reservation::create($validatedData);
 
         $client = new Client(env('RECOMBEE_DATABASE'), env('RECOMBEE_SECRET_TOKEN'), [
             'region' => 'eu-west',
@@ -72,13 +77,18 @@ class ReservationController extends Controller
         ]);
 
         try {
-            // Make sure user exists
-            $client->send(new AddPurchase(
-                $validatedData['user_id'],
-                $validatedData['car_id'],
-            ));
+            // Recombee expects string IDs, not integers
+            $userId = (string) $validatedData['user_id'];
+            $carId = (string) $validatedData['car_id'];
 
+            // Ensure user exists in Recombee
+            // $client->send(new AddUser($userId));
+            // Ensure car exists in Recombee
+            // $client->send(new AddItem($carId));
+            // Register the purchase (reservation) in Recombee
+            $client->send(new AddPurchase($userId, $carId));
         } catch (\Exception $e) {
+            Log::error(message: 'Recombee error: ' . $e->getMessage());
         }
         return Redirect::back()->with('msg', 'Reserved Successfully');
     }
@@ -119,12 +129,33 @@ class ReservationController extends Controller
     public function cancelReservation(Reservation $reservation)
     {
         $reservation->update(['state' => StatesEnum::CANCELED]);
+        // Remove from Recombee
+        try {
+            $client = new \Recombee\RecommApi\Client(env('RECOMBEE_DATABASE'), env('RECOMBEE_SECRET_TOKEN'), [
+                'region' => 'eu-west',
+                'timeout' => 10000
+            ]);
+            $client->send(new \Recombee\RecommApi\Requests\DeletePurchase($reservation->user_id, $reservation->car_id));
+        } catch (\Exception $e) {
+            // Optionally log error
+        }
         $reservation->delete();
         return redirect()->route('reservations.index')->with('success', 'Reservation canceled successfully.');
     }
+
     public function completeReservation(Reservation $reservation)
     {
         $reservation->update(['state' => StatesEnum::COMPLETED]);
+        // Remove from Recombee
+        try {
+            $client = new \Recombee\RecommApi\Client(env('RECOMBEE_DATABASE'), env('RECOMBEE_SECRET_TOKEN'), [
+                'region' => 'eu-west',
+                'timeout' => 10000
+            ]);
+            $client->send(new \Recombee\RecommApi\Requests\DeletePurchase($reservation->user_id, $reservation->car_id));
+        } catch (\Exception $e) {
+            // Optionally log error
+        }
         $reservation->delete();
         return redirect()->route('reservations.index')->with('success', 'Reservation completed successfully.');
     }

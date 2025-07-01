@@ -50,14 +50,49 @@
                                 <h5 class="text-muted">Documents</h5>
                                 <ul class="list-unstyled">
                                     @foreach (is_array($car->documents) ? $car->documents : (json_decode($car->documents, true) ?: []) as $document)
-                                        <li>
-                                            <a href="{{ asset('storage/' . $document) }}" target="_blank" class="text-primary">
-                                                <i class="bi bi-file-earmark-text me-1"></i>{{ basename($document) }}
+                                        <li class="mb-2">
+                                            <a href="{{ asset('storage/' . $document) }}" target="_blank" class="doc-link">
+                                                <i class="bi bi-file-earmark-text-fill doc-icon"></i>
+                                                <span class="doc-label">{{ basename($document) }}</span>
                                             </a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
+                            <style>
+                                .doc-link {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 10px;
+                                    padding: 8px 14px;
+                                    border-radius: 8px;
+                                    background: #f8fafc;
+                                    color: #2196F3;
+                                    font-weight: 500;
+                                    text-decoration: none;
+                                    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+                                    box-shadow: 0 1px 4px rgba(75,139,145,0.06);
+                                }
+                                .doc-link:hover {
+                                    background: #e0f7fa;
+                                    color: #1565c0;
+                                    box-shadow: 0 2px 8px rgba(75,139,145,0.13);
+                                    text-decoration: none;
+                                }
+                                .doc-icon {
+                                    font-size: 1.3rem;
+                                    color: #4b8b91;
+                                    flex-shrink: 0;
+                                }
+                                .doc-link:hover .doc-icon {
+                                    color: #2196F3;
+                                }
+                                .doc-label {
+                                    font-size: 1.05rem;
+                                    color: inherit;
+                                    word-break: break-all;
+                                }
+                            </style>
                         @endif
 
                         {{-- Video --}}

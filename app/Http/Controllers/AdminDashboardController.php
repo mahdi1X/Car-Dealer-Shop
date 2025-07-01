@@ -163,8 +163,8 @@ class AdminDashboardController extends Controller
             $topBrands = Brand::withCount([
                 'cars as reservation_count' => function ($query) use ($user) {
                     $query->join('reservations', 'cars.id', '=', 'reservations.car_id')
-                        ->join('users', 'reservations.user_id', '=', 'users.id')
-                        ->where('users.region', $user->region);
+                        ->join('users as owners', 'cars.created_by_id', '=', 'owners.id')
+                        ->where('owners.region', $user->region);
                 }
             ])
                 ->orderByDesc('reservation_count')

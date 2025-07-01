@@ -16,8 +16,6 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-
-
                 <!-- Profile Picture -->
                 <div class="text-center mb-4">
                     @if ($user->profile_picture)
@@ -29,7 +27,7 @@
                     @endif
                 </div>
 
-                @if (Auth::id() === $user->id && Auth::user()->role !== 'manager')
+                    @if (Auth::id() === $user->id && Auth::user()->role !== 'manager')
                     <!-- Editable Profile Form -->
                     <div class="card border-0 shadow mb-5 modern-form-card" style="border-radius: 18px; max-width: 650px; margin: 0 auto;">
                         <div class="card-header bg-primary text-white text-center" style="border-radius: 18px 18px 0 0;">

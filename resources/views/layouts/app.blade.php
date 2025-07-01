@@ -243,144 +243,144 @@
 
 
     @if (Auth::check() && Auth::user()->role == 'customer')
-        <div class="search-wrapper mb-4">
-            <form class="search modern-search" action="{{ route('cars.index') }}" method="GET"
-                style="width: 100%;">
-                <div class="d-flex flex-wrap gap-2 align-items-center w-100">
-                    <input type="text" name="q" class="textbox flex-grow-1 search-anim"
-                        placeholder="Search cars or brands..." value="{{ request('q') }}"
-                        style="min-width: 180px;">
-                    <button type="button" class="btn btn-outline-secondary filter-btn" data-bs-toggle="collapse"
-                        data-bs-target="#filterOptions" aria-expanded="false" aria-controls="filterOptions">
-                        <i class="bi bi-sliders"></i> Filters
+        <div class="modern-search-wrapper">
+            <form class="modern-search-form" action="{{ route('cars.index') }}" method="GET">
+                <div class="modern-search-bar d-flex align-items-center">
+                    <span class="modern-search-icon">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" name="q" class="modern-search-input" placeholder="Search cars or brands..." value="{{ request('q') }}">
+                    <button type="button" class="modern-filter-toggle" data-bs-toggle="collapse" data-bs-target="#modernFilterOptions" aria-expanded="false" aria-controls="modernFilterOptions">
+                        <i class="bi bi-sliders"></i>
                     </button>
-                    <button type="submit" class="icon d-flex justify-content-center align-items-center text-center">
-                        <i class="bi bi-search text-white"></i>
+                    <button type="submit" class="modern-search-submit">
+                        <i class="bi bi-arrow-right"></i>
                     </button>
                 </div>
-                <div id="filterOptions" class="collapse mt-3 w-100 modern-filter-panel">
+                <div id="modernFilterOptions" class="collapse modern-filter-panel mt-3">
                     <div class="row g-3">
-                        <div class="col-md-3">
-                            <input type="text" name="color" class="form-control" placeholder="Color"
-                                value="{{ request('color') }}">
+                        <div class="col-md-4 col-6">
+                            <input type="text" name="color" class="form-control modern-filter-input" placeholder="Color" value="{{ request('color') }}">
                         </div>
-                        <div class="col-md-3">
-                            <input type="number" name="year" class="form-control" placeholder="Year"
-                                value="{{ request('year') }}">
+                        <div class="col-md-4 col-6">
+                            <input type="number" name="year" class="form-control modern-filter-input" placeholder="Year" value="{{ request('year') }}">
                         </div>
-                        <div class="col-md-3">
-                            <input type="number" name="price" class="form-control" placeholder="Max Price"
-                                value="{{ request('price') }}">
+                        <div class="col-md-4 col-6">
+                            <input type="number" name="price" class="form-control modern-filter-input" placeholder="Max Price" value="{{ request('price') }}">
                         </div>
-                        <div class="col-md-3">
-                            <input type="text" name="engine_type" class="form-control" placeholder="Engine Type"
-                                value="{{ request('engine_type') }}">
+                        <div class="col-md-4 col-6">
+                            <input type="text" name="engine_type" class="form-control modern-filter-input" placeholder="Engine Type" value="{{ request('engine_type') }}">
                         </div>
-                        <div class="col-md-3">
-                            <input type="number" step="0.1" name="engine_size" class="form-control"
-                                placeholder="Engine Size (L)" value="{{ request('engine_size') }}">
+                        <div class="col-md-4 col-6">
+                            <input type="number" step="0.1" name="engine_size" class="form-control modern-filter-input" placeholder="Engine Size (L)" value="{{ request('engine_size') }}">
                         </div>
-                        <div class="col-md-3">
-                            <input type="number" name="horsepower" class="form-control"
-                                placeholder="Min Horsepower" value="{{ request('horsepower') }}">
+                        <div class="col-md-4 col-6">
+                            <input type="number" name="horsepower" class="form-control modern-filter-input" placeholder="Min Horsepower" value="{{ request('horsepower') }}">
                         </div>
-                        <div class="col-md-3">
-                            <input type="number" name="seats" class="form-control" placeholder="Seats"
-                                value="{{ request('seats') }}">
+                        <div class="col-md-4 col-6">
+                            <input type="number" name="seats" class="form-control modern-filter-input" placeholder="Seats" value="{{ request('seats') }}">
                         </div>
                         <div class="col-md-12 text-end">
-                            <button type="submit" class="btn btn-primary px-4">Apply Filters</button>
+                            <button type="submit" class="btn modern-filter-apply-btn">Apply Filters</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
         <style>
-            .modern-search {
-                background: rgba(255, 255, 255, 0.18);
-                border-radius: 32px;
-                box-shadow: 0 4px 24px rgba(75, 139, 145, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-                padding: 8px 16px;
-                transition: box-shadow 0.3s, background 0.3s;
+            .modern-search-wrapper {
+                position: fixed;
+                top: 150px;
+                right: 40px;
+                z-index: 1050;
+                width: 420px;
+                max-width: 95vw;
+                background: none;
+                box-shadow: none;
+                display: flex;
+                justify-content: flex-end;
+            }
+            .modern-search-form {
+                width: 100%;
+            }
+            .modern-search-bar {
+                background: rgba(255,255,255,0.95);
+                border-radius: 18px;
+                box-shadow: 0 8px 32px rgba(75,139,145,0.13), 0 2px 8px rgba(0,0,0,0.04);
+                padding: 10px 18px;
                 border: 1.5px solid #e0e7ef;
+                transition: box-shadow 0.3s, background 0.3s;
+                gap: 10px;
             }
-
-            .modern-search:hover {
-                background: rgba(75, 139, 145, 0.08);
-                box-shadow: 0 8px 32px rgba(75, 139, 145, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08);
+            .modern-search-bar:focus-within {
+                box-shadow: 0 12px 36px rgba(0,188,212,0.18), 0 4px 16px rgba(0,0,0,0.08);
+                background: #f8fafc;
             }
-
-            .modern-search .textbox {
-                background: transparent;
+            .modern-search-icon {
+                color: #4b8b91;
+                font-size: 1.4rem;
+                margin-right: 6px;
+            }
+            .modern-search-input {
+                flex: 1 1 auto;
                 border: none;
-                color: #222;
+                background: transparent;
                 font-size: 1.1rem;
-                padding: 10px 0;
+                color: #222;
+                padding: 8px 0;
+                outline: none;
                 transition: background 0.2s;
             }
-
-            .modern-search .textbox:focus {
-                outline: none;
-                background: rgba(0, 188, 212, 0.07);
-                border-radius: 8px;
+            .modern-search-input::placeholder {
+                color: #b0b0b0;
+                font-weight: 400;
             }
-
-            .modern-search .filter-btn {
-                border-radius: 8px;
-                border: 1px solid #e0e7ef;
+            .modern-filter-toggle {
+                border: none;
                 background: #f8fafc;
                 color: #4b8b91;
-                font-weight: 500;
+                border-radius: 8px;
+                font-size: 1.2rem;
+                padding: 6px 10px;
                 transition: background 0.2s, color 0.2s;
+                margin-left: 4px;
             }
-
-            .modern-search .filter-btn:hover,
-            .modern-search .filter-btn:focus {
+            .modern-filter-toggle:hover, .modern-filter-toggle:focus {
                 background: #e0f7fa;
                 color: #2196F3;
             }
-
-            .modern-search .icon {
-                background: #4b8b91;
-                color: #fff;
+            .modern-search-submit {
                 border: none;
+                background: linear-gradient(90deg, #4b8b91 60%, #2196F3 100%);
+                color: #fff;
                 border-radius: 50%;
-                width: 44px;
-                height: 44px;
+                width: 40px;
+                height: 40px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 font-size: 1.3rem;
+                margin-left: 4px;
                 transition: background 0.2s;
+                box-shadow: 0 2px 8px rgba(75,139,145,0.08);
             }
-
-            .modern-search .icon:hover {
-                background: #2196F3;
+            .modern-search-submit:hover {
+                background: linear-gradient(90deg, #2196F3 60%, #4b8b91 100%);
             }
-
             .modern-filter-panel {
-                background: rgba(255, 255, 255, 0.95);
+                background: rgba(255,255,255,0.99);
                 border-radius: 18px;
-                box-shadow: 0 4px 24px rgba(75, 139, 145, 0.10), 0 2px 8px rgba(0, 0, 0, 0.04);
+                box-shadow: 0 4px 24px rgba(75,139,145,0.10), 0 2px 8px rgba(0,0,0,0.04);
                 padding: 24px 18px 12px 18px;
-                margin-top: 10px;
                 border: 1.5px solid #e0e7ef;
                 animation: fadeInFilter 0.3s;
+                margin-top: 10px;
             }
-
             @keyframes fadeInFilter {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+                from { opacity: 0; transform: translateY(-10px);}
+                to { opacity: 1; transform: translateY(0);}
             }
-
-            .modern-filter-panel input.form-control {
+            .modern-filter-input {
                 border-radius: 8px;
                 border: 1.5px solid #e0e7ef;
                 background: #f8fafc;
@@ -388,37 +388,36 @@
                 font-size: 1rem;
                 transition: border-color 0.2s, box-shadow 0.2s;
             }
-
-            .modern-filter-panel input.form-control:focus {
+            .modern-filter-input:focus {
                 border-color: #4b8b91;
                 box-shadow: 0 0 0 2px #e0f7fa;
                 background: #fff;
             }
-
-            .modern-filter-panel .btn-primary {
+            .modern-filter-apply-btn {
                 border-radius: 8px;
                 font-weight: 600;
-                background: #4b8b91;
+                background: linear-gradient(90deg, #4b8b91 60%, #2196F3 100%);
                 border: none;
+                color: #fff;
+                padding: 8px 28px;
                 transition: background 0.2s;
+                box-shadow: 0 2px 8px rgba(75,139,145,0.08);
             }
-
-            .modern-filter-panel .btn-primary:hover {
-                background: #2196F3;
+            .modern-filter-apply-btn:hover {
+                background: linear-gradient(90deg, #2196F3 60%, #4b8b91 100%);
             }
-
-            /* Keep filter button hidden until hover */
-            .modern-search .filter-btn {
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s;
-            }
-
-            .modern-search:hover .filter-btn,
-            .modern-search:focus-within .filter-btn {
-                display: inline-block !important;
-                opacity: 1;
-                pointer-events: auto;
+            @media (max-width: 600px) {
+                .modern-search-wrapper {
+                    right: 0;
+                    left: 0;
+                    top: 90px;
+                    width: 98vw;
+                    padding: 0 1vw;
+                }
+                .modern-search-bar, .modern-filter-panel {
+                    padding-left: 8px;
+                    padding-right: 8px;
+                }
             }
         </style>
     @endif
@@ -831,4 +830,5 @@
 
 </body>
 
+</html>
 </html>

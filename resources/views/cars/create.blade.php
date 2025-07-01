@@ -2,6 +2,21 @@
 
 @section('content')
     <div class="container mt-5">
+        {{-- Show validation errors --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>There were some problems with your submission:</strong>
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <div class="mt-2 text-danger">
+                    <small>Note: File uploads (gallery, documents, video) must be re-selected after a validation error.</small>
+                </div>
+            </div>
+        @endif
+
         <h1>{{ isset($car->id) ? 'Update Car' : 'Create a New Car' }}</h1>
 
         @if (session('success'))
@@ -129,8 +144,14 @@
                             <tr>
                                 <td><label for="transmission" class="form-label">Transmission</label></td>
                                 <td>
-                                    <input type="text" name="transmission" id="transmission" class="form-control"
-                                        value="{{ old('transmission', $car->transmission ?? '') }}">
+                                    <select name="transmission" id="transmission" class="form-control">
+                                        <option value="">Select Transmission</option>
+                                        <option value="Automatic" {{ old('transmission', $car->transmission ?? '') == 'Automatic' ? 'selected' : '' }}>Automatic</option>
+                                        <option value="Manual" {{ old('transmission', $car->transmission ?? '') == 'Manual' ? 'selected' : '' }}>Manual</option>
+                                        <option value="CVT" {{ old('transmission', $car->transmission ?? '') == 'CVT' ? 'selected' : '' }}>CVT</option>
+                                        <option value="Dual-Clutch" {{ old('transmission', $car->transmission ?? '') == 'Dual-Clutch' ? 'selected' : '' }}>Dual-Clutch</option>
+                                        <option value="Tiptronic" {{ old('transmission', $car->transmission ?? '') == 'Tiptronic' ? 'selected' : '' }}>Tiptronic</option>
+                                    </select>
                                     @error('transmission')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -139,8 +160,15 @@
                             <tr>
                                 <td><label for="engine_type" class="form-label">Engine Type</label></td>
                                 <td>
-                                    <input type="text" name="engine_type" id="engine_type" class="form-control"
-                                        value="{{ old('engine_type', $car->engine_type ?? '') }}">
+                                    <select name="engine_type" id="engine_type" class="form-control">
+                                        <option value="">Select Engine Type</option>
+                                        <option value="Petrol" {{ old('engine_type', $car->engine_type ?? '') == 'Petrol' ? 'selected' : '' }}>Petrol</option>
+                                        <option value="Diesel" {{ old('engine_type', $car->engine_type ?? '') == 'Diesel' ? 'selected' : '' }}>Diesel</option>
+                                        <option value="Hybrid" {{ old('engine_type', $car->engine_type ?? '') == 'Hybrid' ? 'selected' : '' }}>Hybrid</option>
+                                        <option value="Electric" {{ old('engine_type', $car->engine_type ?? '') == 'Electric' ? 'selected' : '' }}>Electric</option>
+                                        <option value="LPG" {{ old('engine_type', $car->engine_type ?? '') == 'LPG' ? 'selected' : '' }}>LPG</option>
+                                        <option value="CNG" {{ old('engine_type', $car->engine_type ?? '') == 'CNG' ? 'selected' : '' }}>CNG</option>
+                                    </select>
                                     @error('engine_type')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -179,8 +207,13 @@
                             <tr>
                                 <td><label for="drivetrain" class="form-label">Drivetrain</label></td>
                                 <td>
-                                    <input type="text" name="drivetrain" id="drivetrain" class="form-control"
-                                        value="{{ old('drivetrain', $car->drivetrain ?? '') }}">
+                                    <select name="drivetrain" id="drivetrain" class="form-control">
+                                        <option value="">Select Drivetrain</option>
+                                        <option value="FWD" {{ old('drivetrain', $car->drivetrain ?? '') == 'FWD' ? 'selected' : '' }}>FWD (Front Wheel Drive)</option>
+                                        <option value="RWD" {{ old('drivetrain', $car->drivetrain ?? '') == 'RWD' ? 'selected' : '' }}>RWD (Rear Wheel Drive)</option>
+                                        <option value="AWD" {{ old('drivetrain', $car->drivetrain ?? '') == 'AWD' ? 'selected' : '' }}>AWD (All Wheel Drive)</option>
+                                        <option value="4WD" {{ old('drivetrain', $car->drivetrain ?? '') == '4WD' ? 'selected' : '' }}>4WD (Four Wheel Drive)</option>
+                                    </select>
                                     @error('drivetrain')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -189,8 +222,15 @@
                             <tr>
                                 <td><label for="fuel_type" class="form-label">Fuel Type</label></td>
                                 <td>
-                                    <input type="text" name="fuel_type" id="fuel_type" class="form-control"
-                                        value="{{ old('fuel_type', $car->fuel_type ?? '') }}">
+                                    <select name="fuel_type" id="fuel_type" class="form-control">
+                                        <option value="">Select Fuel Type</option>
+                                        <option value="Petrol" {{ old('fuel_type', $car->fuel_type ?? '') == 'Petrol' ? 'selected' : '' }}>Petrol</option>
+                                        <option value="Diesel" {{ old('fuel_type', $car->fuel_type ?? '') == 'Diesel' ? 'selected' : '' }}>Diesel</option>
+                                        <option value="Hybrid" {{ old('fuel_type', $car->fuel_type ?? '') == 'Hybrid' ? 'selected' : '' }}>Hybrid</option>
+                                        <option value="Electric" {{ old('fuel_type', $car->fuel_type ?? '') == 'Electric' ? 'selected' : '' }}>Electric</option>
+                                        <option value="LPG" {{ old('fuel_type', $car->fuel_type ?? '') == 'LPG' ? 'selected' : '' }}>LPG</option>
+                                        <option value="CNG" {{ old('fuel_type', $car->fuel_type ?? '') == 'CNG' ? 'selected' : '' }}>CNG</option>
+                                    </select>
                                     @error('fuel_type')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -199,8 +239,13 @@
                             <tr>
                                 <td><label for="fuel_economy" class="form-label">Fuel Economy</label></td>
                                 <td>
-                                    <input type="text" name="fuel_economy" id="fuel_economy" class="form-control"
-                                        value="{{ old('fuel_economy', $car->fuel_economy ?? '') }}">
+                                    <select name="fuel_economy" id="fuel_economy" class="form-control">
+                                        <option value="">Select Fuel Economy</option>
+                                        <option value="Excellent" {{ old('fuel_economy', $car->fuel_economy ?? '') == 'Excellent' ? 'selected' : '' }}>Excellent</option>
+                                        <option value="Good" {{ old('fuel_economy', $car->fuel_economy ?? '') == 'Good' ? 'selected' : '' }}>Good</option>
+                                        <option value="Average" {{ old('fuel_economy', $car->fuel_economy ?? '') == 'Average' ? 'selected' : '' }}>Average</option>
+                                        <option value="Poor" {{ old('fuel_economy', $car->fuel_economy ?? '') == 'Poor' ? 'selected' : '' }}>Poor</option>
+                                    </select>
                                     @error('fuel_economy')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -220,8 +265,19 @@
                             <tr>
                                 <td><label for="body_type" class="form-label">Body Type</label></td>
                                 <td>
-                                    <input type="text" name="body_type" id="body_type" class="form-control"
-                                        value="{{ old('body_type', $car->body_type ?? '') }}">
+                                    <select name="body_type" id="body_type" class="form-control">
+                                        <option value="">Select Body Type</option>
+                                        <option value="Sedan" {{ old('body_type', $car->body_type ?? '') == 'Sedan' ? 'selected' : '' }}>Sedan</option>
+                                        <option value="Hatchback" {{ old('body_type', $car->body_type ?? '') == 'Hatchback' ? 'selected' : '' }}>Hatchback</option>
+                                        <option value="SUV" {{ old('body_type', $car->body_type ?? '') == 'SUV' ? 'selected' : '' }}>SUV</option>
+                                        <option value="Coupe" {{ old('body_type', $car->body_type ?? '') == 'Coupe' ? 'selected' : '' }}>Coupe</option>
+                                        <option value="Convertible" {{ old('body_type', $car->body_type ?? '') == 'Convertible' ? 'selected' : '' }}>Convertible</option>
+                                        <option value="Wagon" {{ old('body_type', $car->body_type ?? '') == 'Wagon' ? 'selected' : '' }}>Wagon</option>
+                                        <option value="Pickup" {{ old('body_type', $car->body_type ?? '') == 'Pickup' ? 'selected' : '' }}>Pickup</option>
+                                        <option value="Van" {{ old('body_type', $car->body_type ?? '') == 'Van' ? 'selected' : '' }}>Van</option>
+                                        <option value="Minivan" {{ old('body_type', $car->body_type ?? '') == 'Minivan' ? 'selected' : '' }}>Minivan</option>
+                                        <option value="Other" {{ old('body_type', $car->body_type ?? '') == 'Other' ? 'selected' : '' }}>Other</option>
+                                    </select>
                                     @error('body_type')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -435,8 +491,15 @@
                             <tr>
                                 <td><label for="condition" class="form-label">Condition</label></td>
                                 <td>
-                                    <input type="text" name="condition" id="condition" class="form-control"
-                                        value="{{ old('condition', $car->condition ?? '') }}">
+                                    <select name="condition" id="condition" class="form-control">
+                                        <option value="">Select Condition</option>
+                                        <option value="New" {{ old('condition', $car->condition ?? '') == 'New' ? 'selected' : '' }}>New</option>
+                                        <option value="Like New" {{ old('condition', $car->condition ?? '') == 'Like New' ? 'selected' : '' }}>Like New</option>
+                                        <option value="Excellent" {{ old('condition', $car->condition ?? '') == 'Excellent' ? 'selected' : '' }}>Excellent</option>
+                                        <option value="Good" {{ old('condition', $car->condition ?? '') == 'Good' ? 'selected' : '' }}>Good</option>
+                                        <option value="Fair" {{ old('condition', $car->condition ?? '') == 'Fair' ? 'selected' : '' }}>Fair</option>
+                                        <option value="Needs Repair" {{ old('condition', $car->condition ?? '') == 'Needs Repair' ? 'selected' : '' }}>Needs Repair</option>
+                                    </select>
                                     @error('condition')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror

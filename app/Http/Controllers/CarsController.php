@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Brand;
@@ -12,7 +12,8 @@ use Recombee\RecommApi\Client;
 use Recombee\RecommApi\Requests\{
     AddItem,
     SetItemValues,
-    AddItemProperty
+    AddItemProperty,
+    AddDetailView
 };
 use App\Enums\StatesEnum;
 
@@ -92,7 +93,6 @@ class CarsController extends Controller
      */
     public function create(Request $request)
     {
-        // dd($request->all());
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'color' => 'required|string|max:255',
@@ -140,7 +140,7 @@ class CarsController extends Controller
             'gallery_images.*' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
 
             // Main image
-            'image' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'required|file|mimes:jpg,jpeg,png|max:10048',
         ]);
 
         // dd($request->all());
@@ -222,11 +222,36 @@ class CarsController extends Controller
     }
 
 
-    public function show(Car $car, User $user)
+    public function show(Car $car)
     {
+        $user = Auth::user();
+       
         // add flag is_reserver if car->reservations() does not include a pending reservation:
         $isReserved = $car->reservations()->where('state', StatesEnum::PENDING)->exists();
-        return view('cars.show', compact('car', 'user', 'isReserved'));
+        try {
+            $client = new Client(env('RECOMBEE_DATABASE'), env('RECOMBEE_SECRET_TOKEN'), [
+                'region' => 'eu-west',
+                'timeout' => 10000
+            ]);
+
+            Log::error(message: 'User id : ' . $user->id . ' ' . $car->id);
+            $client->send(new AddDetailView(
+                $user->id,
+                $car->id,
+                [
+                    'timestamp' => now()->timestamp,
+                    'duration' => 0, // Duration in seconds, can be set to 0
+                    'cascadeCreate' => true,
+                    'recommId' => null, // Optional recommId if needed
+                ]
+            ));
+        } catch (\Exception $e) {
+            Log::error(message: 'Recombee error: ' . $e->getMessage());
+        }
+    
+        return view('cars.show', compact('car', 'isReserved'));
+
+
     }
     /**
      * Show the form for editing the specified resource.
@@ -363,6 +388,18 @@ class CarsController extends Controller
         }
         if ($car->video) {
             Storage::disk('public')->delete($car->video);
+        }
+
+        // Remove from Recombee
+        try {
+            $client = new \Recombee\RecommApi\Client(env('RECOMBEE_DATABASE'), env('RECOMBEE_SECRET_TOKEN'), [
+                'region' => 'eu-west',
+                'timeout' => 10000
+            ]);
+            $client->send(new \Recombee\RecommApi\Requests\DeleteItem($car->id));
+        } catch (\Exception $e) {
+            Log::error(message: 'Error deleting car from Recombee: ' . $e->getMessage());
+
         }
 
         $car->delete();

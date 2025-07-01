@@ -166,7 +166,20 @@ class RegisterController extends Controller
 
         return redirect()->route('user.profile', $user->id)->with('message', 'Profile updated successfully.');
     }
-
-
-
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        // Remove from Recombee
+        try {
+            $client = new \Recombee\RecommApi\Client(env('RECOMBEE_DATABASE'), env('RECOMBEE_SECRET_TOKEN'), [
+                'region' => 'eu-west',
+                'timeout' => 10000
+            ]);
+            $client->send(new \Recombee\RecommApi\Requests\DeleteUser($user->id));
+        } catch (\Exception $e) {
+            // Optionally log error
+        }
+        $user->delete();
+        // ...redirect or return as needed...
+    }
 }

@@ -11,6 +11,12 @@
                     {{ session('success') }}
                 </div>
             @endif
+            {{-- Success message --}}
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
 
             {{-- Validation errors --}}
             @if ($errors->any())
