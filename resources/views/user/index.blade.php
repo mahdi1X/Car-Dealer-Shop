@@ -34,6 +34,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Contact</th>
                             <th>Ban Status / Actions</th>
                         </tr>
                     </thead>
@@ -51,6 +52,11 @@
                                         </div>
                                     </td>
                                     <td>{{ $user->email }}</td>
+                                    <td>
+                                        <a href="mailto:{{ $user->email }}?subject=Contact%20from%20CarMart" class="btn btn-sm btn-outline-primary" target="_blank">
+                                            <i class="bi bi-envelope-at"></i> Contact
+                                        </a>
+                                    </td>
                                     <td>
                                         <button class="btn btn-sm btn-danger" onclick="toggleBanForm({{ $user->id }})">
                                             Ban
@@ -94,6 +100,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Contact</th>
                             <th>Ban Reason</th>
                             <th>Banned Until</th>
                             <th>Actions</th>
@@ -113,6 +120,11 @@
                                         </div>
                                     </td>
                                     <td>{{ $user->email }}</td>
+                                    <td>
+                                        <a href="mailto:{{ $user->email }}?subject=Contact%20from%20CarMart" class="btn btn-sm btn-outline-primary" target="_blank">
+                                            <i class="bi bi-envelope-at"></i> Contact
+                                        </a>
+                                    </td>
                                     <td>{{ $user->ban_reason }}</td>
                                     <td>
                                         {{ $user->banned_until ? $user->banned_until->format('Y-m-d') : 'Permanent' }}
@@ -130,6 +142,46 @@
                 </table>
             </div>
         </div>
+        <!-- Most Reported Users Table (if present) -->
+        @if(isset($mostReportedUsers))
+        <div id="most-reported-users" class="mt-4">
+            <h4>Most Reported Users</h4>
+            <div class="table-responsive">
+                <table class="table table-hover table-modern align-middle shadow-sm rounded-4">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Reports Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($mostReportedUsers as $user)
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="avatar bg-danger text-white rounded-circle me-2"
+                                            style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+                                            {{ strtoupper(substr($user->name, 0, 1)) }}
+                                        </span>
+                                        <span>{{ $user->name }}</span>
+                                    </div>
+                                </td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    <a href="mailto:{{ $user->email }}?subject=Contact%20from%20CarMart" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        <i class="bi bi-envelope-at"></i> Contact
+                                    </a>
+                                </td>
+                                <td>{{ $user->reports_count ?? 0 }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @endif
         <style>
             .table-modern {
                 border-radius: 16px;
