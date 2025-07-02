@@ -6,7 +6,7 @@
             <div class="card-body">
                 <h1 class="mb-4 text-center fancy-title">{{ $car->name ?? 'Unnamed Car' }}</h1>
                 {{-- Brand Icon Fixed Button --}}
-                @if ($car->brand && $car->brand->icon)
+                @if ($car->brand && $car->brand->icon && (!Auth::check() || (Auth::user()->role !== 'admin' && Auth::user()->role !== 'manager')))
                     <a href="{{ route('brands.show', $car->brand->id) }}"
                        class="brand-icon-btn"
                        style="position: fixed; bottom: 30px; left: 30px; z-index: 1001; display: flex; align-items: center; background: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(75,139,145,0.13); width: 70px; height: 70px; justify-content: center; border: 2.5px solid #e0e7ef; transition: box-shadow 0.2s, transform 0.2s;">
@@ -167,6 +167,7 @@
                     $likesCount = $car->likes()->count();
                 @endphp
 
+                @if (!Auth::check() || (Auth::user()->role !== 'admin' && Auth::user()->role !== 'manager'))
                 <div class="mt-4 text-center">
                     @if (auth()->check())
                         <form id="likeForm" action="{{ route('like.toggle') }}" method="POST" class="d-inline-block" onsubmit="return false;">
@@ -189,6 +190,7 @@
                         </a>
                     @endif
                 </div>
+                @endif
 
                 {{-- Owner --}}
                 <div class="flex justify-center mt-5">
@@ -203,7 +205,7 @@
                 </div>
 
                 {{-- Reserve Button (if not car owner) --}}
-                @if (Auth::check() && $car->created_by_id != Auth::id())
+                @if (Auth::check() && Auth::user()->role !== 'admin' && Auth::user()->role !== 'manager' && $car->created_by_id != Auth::id())
                     <button class="fixed-button btn btn-primary" @if ($isReserved) disabled @endif
                         @if ($isReserved) style="cursor: not-allowed;" @endif   
                         onclick="window.location.href='{{ route('reservations.create', ['car' => $car->id]) }}'">

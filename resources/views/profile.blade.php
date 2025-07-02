@@ -146,23 +146,36 @@
                 @endif
 
                 <!-- Listed Cars -->
-                @if (Auth::user()->role !== 'admin' && Auth::user()->role !== 'manager')
                 <div class="mt-5">
                     <h4 class="text-primary mb-3">Listed Cars</h4>
                     @if ($cars->count())
                         <div class="row">
                             @foreach ($cars as $car)
                                 <div class="col-md-4 mb-4">
-                                    <div class="card border-0 shadow h-100">
-                                        <img src="{{ asset('storage/' . $car->image) }}" class="card-img-top"
-                                            style="object-fit: cover; height: 160px;" alt="{{ $car->name }}">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title text-primary">{{ $car->name }}</h5>
+                                    <a href="{{ route('cars.show', $car->id) }}" class="text-decoration-none">
+                                        <div class="card border-0 shadow h-100 hover-shadow" style="transition: box-shadow 0.2s;">
+                                            <img src="{{ asset('storage/' . $car->image) }}" class="card-img-top"
+                                                style="object-fit: cover; height: 160px;" alt="{{ $car->name }}">
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title text-primary">{{ $car->name }}</h5>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             @endforeach
                         </div>
+                        <style>
+                            .hover-shadow:hover {
+                                box-shadow: 0 8px 32px rgba(75,139,145,0.18), 0 4px 16px rgba(0,0,0,0.10) !important;
+                                transform: scale(1.03);
+                            }
+                            .card-img-top {
+                                transition: filter 0.2s;
+                            }
+                            a.text-decoration-none:hover .card-img-top {
+                                filter: brightness(0.95) blur(0.5px);
+                            }
+                        </style>
                     @else
                         <p class="text-muted text-center">No cars listed yet.</p>
                     @endif
@@ -175,7 +188,7 @@
                         <!-- Report Modal -->
                     @endif
                 </div>
-                @endif
+                
             </div>
         </div>
     </div>

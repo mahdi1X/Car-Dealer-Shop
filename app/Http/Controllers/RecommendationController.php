@@ -30,12 +30,12 @@ class RecommendationController extends Controller
             $response = $client->send(new RecommendItemsToUser($userId, 6, [
                 // 'returnProperties' => true,
                 // 'diversity' => 0.0,
-                'minRelevance' => 'medium',
+                'minRelevance' => 'low',
                 // 'rotationRate' => 0.5,
                 // 'rotationTime' => 3600,
                 // 'allowRepetition' => false,
             ]));
-            
+
             $recommendedIds = collect($response['recomms'])->pluck('id')->map(fn($id) => (int)$id);
             Log::error(message: 'recommendedIds: ' . $recommendedIds);
 
