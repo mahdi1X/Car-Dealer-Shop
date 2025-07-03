@@ -30,7 +30,7 @@ class RecommendationController extends Controller
             $response = $client->send(new RecommendItemsToUser($userId, 6, [
                 // 'returnProperties' => true,
                 // 'diversity' => 0.0,
-                'minRelevance' => 'low',
+                'minRelevance' => 'low', // 'low', 'medium', 'high'
                 // 'rotationRate' => 0.5,
                 // 'rotationTime' => 3600,
                 // 'allowRepetition' => false,

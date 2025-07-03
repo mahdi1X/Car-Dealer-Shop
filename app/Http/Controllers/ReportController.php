@@ -92,7 +92,22 @@ class ReportController extends Controller
         abort(403, 'Unauthorized');
     }
 
+    public function destroy($id)
+    {
+        $report = Report::findOrFail($id);
 
+        // Only allow managers of the same region or admins to delete
+        $user = Auth::user();
+        if (
+            ($user->role === 'manager' && $report->reportedUser && $report->reportedUser->region === $user->region)
+            || $user->role === 'admin'
+        ) {
+            $report->delete();
+            return back()->with('success', 'Report deleted successfully.');
+        }
+
+        abort(403, 'Unauthorized');
+    }
 
 
 

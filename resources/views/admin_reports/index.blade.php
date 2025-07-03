@@ -19,6 +19,11 @@
                             <a href="{{ route('admin-reports.show', $adminReport->id) }}" class="btn btn-outline-primary btn-sm mt-2">
                                 View Full Report
                             </a>
+                            <form action="{{ route('reports.destroy', $adminReport->report->id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this report?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-outline-danger btn-sm mt-2 ms-1">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>

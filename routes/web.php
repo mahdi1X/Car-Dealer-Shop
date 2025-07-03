@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('', [CarsController::class, 'destroy'])->name('cars.destroy');
     Route::middleware('auth')->post('/like-toggle', [LikeController::class, 'toggle'])->name('like.toggle');
     Route::get('/my-liked-cars', [CarsController::class, 'myLikedCars'])->middleware('auth')->name('cars.liked');
+    Route::delete('reports/{id}', [ReportController::class, 'destroy'])->name('reports.destroy');
 
     Route::get('/reservations/events', [ReservationController::class, 'calendarEvents'])->name('reservations.events');
     Route::get('/reservations/{car}', [ReservationController::class, 'create'])->name('reservations.create');

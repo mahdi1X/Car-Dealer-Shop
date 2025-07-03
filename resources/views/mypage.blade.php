@@ -1,10 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{ route('cars.create') }}">
-        <i class="fa fa-plus fa-3x flex-shrink-0 fixed-bottom-button"
-            style="border: 5px solid #4b4b4b; border-radius: 50%; padding: 10px; color: #4b4b4b; background-color: white;"></i>
+    <a href="{{ route('cars.create') }}" class="modern-add-car-btn" title="Add Car">
+        <i class="fa fa-plus"></i>
     </a>
+    <style>
+        .modern-add-car-btn {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4b8b91 60%, #2196F3 100%);
+            color: #fff;
+            font-size: 2.2rem;
+            box-shadow: 0 8px 32px rgba(75,139,145,0.18), 0 4px 16px rgba(0,0,0,0.10);
+            border: none;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+            cursor: pointer;
+        }
+        .modern-add-car-btn:hover, .modern-add-car-btn:focus {
+            background: linear-gradient(135deg, #2196F3 60%, #4b8b91 100%);
+            color: #fff;
+            box-shadow: 0 12px 48px rgba(75,139,145,0.22), 0 6px 20px rgba(0,0,0,0.13);
+            transform: scale(1.08) rotate(-8deg);
+            text-decoration: none;
+        }
+        .modern-add-car-btn i {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+        @media (max-width: 600px) {
+            .modern-add-car-btn {
+                width: 52px;
+                height: 52px;
+                font-size: 1.5rem;
+                bottom: 16px;
+                right: 16px;
+            }
+        }
+    </style>
 
     <div class="container-fluid">
         <br>

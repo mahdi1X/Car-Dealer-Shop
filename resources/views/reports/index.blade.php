@@ -54,6 +54,11 @@
                             <td>
                                 <a href="{{ route('reports.show', $report->id) }}" class="btn btn-outline-primary btn-sm">View
                                 </a>
+                                <form action="{{ route('reports.destroy', $report->id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this report?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-sm ms-1">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         <tr id="form-row-{{ $report->id }}" style="display: none;">
